@@ -11,8 +11,7 @@ router.get('/', async (req, res) => {
         },
       ],
     });
-    const tasks = tasksData.map((task) => task.get({ plain: true }));
-    return res.status(200).json(tasks);
+    return res.status(200).json(tasksData);
   } catch (error) {
     return res.status(500).json(error);
   }
@@ -24,8 +23,7 @@ router.get('/:id', async (req, res) => {
     if (!taskData) {
       return res.status(404).json({ message: 'Task not found' });
     }
-    const task = taskData.get({ plain: true });
-    return res.status(200).json(task);
+    return res.status(200).json(taskData);
   } catch (error) {
     return res.status(500).json(error);
   }
