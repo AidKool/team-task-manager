@@ -1,7 +1,9 @@
+/* eslint-disable no-console */
 const sequelize = require('../config/connection');
 const seedUsers = require('./user-seeds');
 const seedTask = require('./task-seeds');
 const seedTeam = require('./team-seeds');
+const seedProject = require('./project-seeds');
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
@@ -10,6 +12,8 @@ const seedAll = async () => {
   console.log('\n----- USERS SYNCED -----\n');
   await seedTask();
   console.log('\n----- TASKS SYNCED -----\n');
+  await seedProject();
+  console.log('\n----- PROJECTS SYNCED -----\n');
   await seedTeam();
   console.log('\n----- TEAMS SYNCED -----\n');
 };

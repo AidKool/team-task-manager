@@ -2,10 +2,24 @@ const { Team } = require('../models');
 
 const teamData = [
   {
-    project_name: 'Website updates',
-    team_manager: '2',
-    team_member: '1',
-    task_id: '1',
+    project_id: 1,
+    team_member_id: 1,
+  },
+  {
+    project_id: 1,
+    team_member_id: 2,
+  },
+  {
+    project_id: 1,
+    team_member_id: 3,
+  },
+  {
+    project_id: 1,
+    team_member_id: 4,
+  },
+  {
+    project_id: 1,
+    team_member_id: 5,
   },
 ];
 

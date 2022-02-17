@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 sequelize
-  .sync({ force: true })
+  .sync({ force: false })
   .then(() =>
     // eslint-disable-next-line no-console
     app.listen(PORT, () => console.log(`Now listening on port ${PORT}`))
