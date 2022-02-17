@@ -20,7 +20,7 @@ Task.init(
       allowNull: false,
     },
     task_deadline: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     user_id: {

@@ -18,13 +18,13 @@ Team.hasMany(User, {
   foreignKey: 'user_id',
 });
 
-Team.hasMany(Task, {
-  through: {
-    model: User,
-  },
-});
+// Team.hasMany(Task, {
+//   through: {
+//     model: User,
+//   },
+// });
 
-Task.belongsTo(Team, {
+Task.belongsToMany(Team, {
   through: {
     model: User,
   },

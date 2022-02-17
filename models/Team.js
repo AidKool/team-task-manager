@@ -30,12 +30,12 @@ Team.init(
         model: 'user',
         key: 'id',
       },
-      team_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'task',
-          key: 'id',
-        },
+    },
+    task_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'task',
+        key: 'id',
       },
     },
   },
