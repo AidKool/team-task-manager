@@ -11,12 +11,12 @@ Task.belongsTo(User, {
   foreignKey: 'user_id',
 });
 
-User.hasOne(Team, {
-  foreignKey: 'team_member_id',
+Team.hasMany(User, {
+  foreignKey: 'team_id',
 });
 
-Team.belongsTo(User, {
-  foreignKey: 'team_member_id',
+User.belongsTo(Team, {
+  foreignKey: 'team_id',
 });
 
 Project.hasOne(Team, {

@@ -7,6 +7,7 @@ const userData = [
     username: 'marthaJ',
     password: 'password1',
     role: 'manager',
+    team_id: 1,
   },
   {
     first_name: 'George',
@@ -14,6 +15,7 @@ const userData = [
     username: 'georgeM',
     password: 'password2',
     role: 'employee',
+    team_id: 1,
   },
   {
     first_name: 'John',
@@ -21,6 +23,7 @@ const userData = [
     username: 'agent.smith',
     password: 'password3',
     role: 'employee',
+    team_id: 1,
   },
   {
     first_name: 'Mel',
@@ -28,6 +31,7 @@ const userData = [
     username: 'melanie',
     password: 'password4',
     role: 'employee',
+    team_id: 1,
   },
   {
     first_name: 'Jess',
@@ -35,6 +39,7 @@ const userData = [
     username: 'jess.allen',
     password: 'password5',
     role: 'employee',
+    team_id: 1,
   },
 ];
 

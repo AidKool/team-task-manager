@@ -8,14 +8,14 @@ const seedProject = require('./project-seeds');
 const seedAll = async () => {
   await sequelize.sync({ force: true });
   console.log('\n----- DATABASE SYNCED -----\n');
-  await seedUsers();
-  console.log('\n----- USERS SYNCED -----\n');
-  await seedTask();
-  console.log('\n----- TASKS SYNCED -----\n');
   await seedProject();
   console.log('\n----- PROJECTS SYNCED -----\n');
   await seedTeam();
   console.log('\n----- TEAMS SYNCED -----\n');
+  await seedUsers();
+  console.log('\n----- USERS SYNCED -----\n');
+  await seedTask();
+  console.log('\n----- TASKS SYNCED -----\n');
 };
 
 seedAll();

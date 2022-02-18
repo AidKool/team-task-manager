@@ -19,13 +19,6 @@ Team.init(
         key: 'id',
       },
     },
-    team_member_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
-    },
   },
   {
     sequelize,
