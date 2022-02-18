@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connection");
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 class Task extends Model {}
 
@@ -20,14 +20,14 @@ Task.init(
       allowNull: false,
     },
     task_deadline: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "user",
-        key: "id",
+        model: 'user',
+        key: 'id',
       },
     },
   },
@@ -36,7 +36,7 @@ Task.init(
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: "task",
+    modelName: 'task',
   }
 );
 
