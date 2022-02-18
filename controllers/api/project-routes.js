@@ -7,6 +7,9 @@ router.get('/', async (req, res) => {
       include: [
         {
           model: Team,
+          attributes: {
+            exclude: ['id'],
+          },
         },
       ],
     });
@@ -22,6 +25,9 @@ router.get('/:id', async (req, res) => {
       include: [
         {
           model: Team,
+          attributes: {
+            exclude: ['id'],
+          },
         },
       ],
     });
