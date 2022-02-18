@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
   try {
-    await Task.update(req.body);
+    await Task.update(req.body, { where: { id: req.params.id } });
     const taskData = await Task.findByPk(req.params.id);
     if (!taskData) {
       return res.status(400).json({ message: 'Task not found' });
