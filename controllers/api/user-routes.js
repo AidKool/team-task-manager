@@ -15,6 +15,18 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/:id', async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.params.id);
+    if (!userData) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    return res.status(200).json(userData);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({

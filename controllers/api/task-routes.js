@@ -29,6 +29,15 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.post('/', async (req, res) => {
+  try {
+    await Task.create(req.body);
+    return res.status(201).json({ message: 'Task successfully created' });
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
 router.patch('/:id', async (req, res) => {
   try {
     await Task.update(req.body);
