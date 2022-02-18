@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   try {
-    const teamData = Team.findByPk(req.params.id, {
+    const teamData = await Team.findByPk(req.params.id, {
       include: [
         {
           model: User,
@@ -54,7 +54,7 @@ router.post('/', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
   try {
-    await Team.update(req.body);
+    await Team.update(req.body, { where: { id: req.params.id } });
     const teamData = await Team.findByPk(req.params.id);
     if (!teamData) {
       return res.status(400).json({ message: 'Team not found' });
