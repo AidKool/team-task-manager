@@ -101,4 +101,17 @@ router.post('/logout', async (req, res) => {
   }
 });
 
+router.patch('/:id', async (req, res) => {
+  try {
+    await User.update(req.body, { where: { id: req.params.id } });
+    const userData = await User.findByPk(req.params.id);
+    if (!userData) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    return res.status(200).json(userData);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
 module.exports = router;
