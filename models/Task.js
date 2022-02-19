@@ -23,6 +23,11 @@ Task.init(
       type: DataTypes.DATEONLY,
       allowNull: false,
     },
+    is_completed: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
