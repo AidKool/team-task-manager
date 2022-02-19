@@ -28,11 +28,6 @@ router.get('/:id', async (req, res) => {
           attributes: {
             exclude: ['password'],
           },
-          include: [
-            {
-              model: Task,
-            },
-          ],
         },
       ],
     });
