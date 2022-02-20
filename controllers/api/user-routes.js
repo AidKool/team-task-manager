@@ -1,6 +1,9 @@
+/* eslint-disable camelcase */
 const router = require('express').Router();
+const { QueryTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
-const { User, Task } = require('../../models');
+const sequelize = require('../../config/connection');
+const { Team, User, Task } = require('../../models');
 
 router.get('/', async (req, res) => {
   try {
@@ -44,6 +47,58 @@ router.get('/:id/tasks', async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
     return res.status(200).json(userTasks);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
+router.get('/:id/tasks/search?', async (req, res) => {
+  try {
+    const userTasks = await User.findByPk(req.params.id, {
+      attributes: ['id', 'username'],
+      include: [
+        {
+          model: Task,
+          where: { status: req.query.status },
+          attributes: {
+            exclude: ['user_id'],
+          },
+        },
+      ],
+    });
+    if (!userTasks) {
+      return res.status(404).json({ message: 'Data not found' });
+    }
+    return res.status(200).json(userTasks);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
+router.get('/:id/team', async (req, res) => {
+  try {
+    const rawData = await sequelize.query(
+      'SELECT team_id FROM user WHERE user.id = :id',
+      {
+        type: QueryTypes.SELECT,
+        replacements: { id: req.params.id },
+      }
+    );
+    if (rawData.length === 0) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    const { team_id } = rawData[0];
+    const userTeam = await Team.findByPk(team_id, {
+      include: [
+        {
+          model: User,
+          attributes: {
+            exclude: ['password'],
+          },
+        },
+      ],
+    });
+    return res.status(200).json(userTeam);
   } catch (error) {
     return res.status(500).json(error);
   }
@@ -98,6 +153,19 @@ router.post('/logout', async (req, res) => {
     req.session.destroy(() => res.status(204).end());
   } else {
     res.status(404).end();
+  }
+});
+
+router.patch('/:id', async (req, res) => {
+  try {
+    await User.update(req.body, { where: { id: req.params.id } });
+    const userData = await User.findByPk(req.params.id);
+    if (!userData) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    return res.status(200).json(userData);
+  } catch (error) {
+    return res.status(500).json(error);
   }
 });
 

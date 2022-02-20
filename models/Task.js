@@ -23,10 +23,11 @@ Task.init(
       type: DataTypes.DATEONLY,
       allowNull: false,
     },
-    is_completed: {
-      type: DataTypes.BOOLEAN,
+    status: {
+      type: DataTypes.ENUM,
       allowNull: false,
-      defaultValue: false,
+      values: ['not_started', 'in_progress', 'completed'],
+      defaultValue: 'not_started',
     },
     user_id: {
       type: DataTypes.INTEGER,
