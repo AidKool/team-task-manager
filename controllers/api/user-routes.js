@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const router = require('express').Router();
 const { QueryTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
