@@ -1,5 +1,5 @@
 {{>headerNav}}
-  <section class='hero m-auto is-large '>
+ <section class='hero m-auto is-large '>
     <div class='container is-fluid columns is-centered'>
       <div class='is-flex is-justify-content-space-evenly p-5 has-background-dark'>
         <div class="columns is-desktop">
@@ -10,21 +10,26 @@
                   <div class="tile is-child box">
                     <div class="columns ">
                       <div class="column is-align-items-center">
-                        <article class="tile is-12 is-child notification is-primary is-flex is-flex-direction-column is-align-items-center">
+                        <article
+                          class="tile is-12 is-child notification is-primary is-flex is-flex-direction-column is-align-items-center">
                           <span class="iconify-inline icon is-large" data-icon="wpf:create-new"></span>
-                          <a class="subtitle">Create Project</a>
+                          <a class="subtitle" href="#">Create Project</a>
                         </article>
                       </div>
                       <div class="column">
-                        <article class="tile is-12 is-child notification is-primary is-flex is-flex-direction-column is-align-items-center">
-                          <span class="iconify-inline icon is-large" data-icon="fluent:people-team-add-24-regular"></span>
-                          <a class="subtitle">Create Team</a>
+                        <article
+                          class="tile is-12 is-child notification is-primary is-flex is-flex-direction-column is-align-items-center">
+                          <span class="iconify-inline icon is-large"
+                            data-icon="fluent:people-team-add-24-regular"></span>
+                          <a class="subtitle" href="#">Create Team</a>
                         </article>
                       </div>
                       <div class="column">
-                        <article class="tile is-12 is-child notification is-primary is-flex is-flex-direction-column is-align-items-center ">
-                          <span class="iconify-inline icon is-large" data-icon="fluent:clipboard-task-list-ltr-24-regular"></span>
-                          <a class="subtitle">Create Task</a>
+                        <article
+                          class="tile is-12 is-child notification is-primary is-flex is-flex-direction-column is-align-items-center ">
+                          <span class="iconify-inline icon is-large"
+                            data-icon="fluent:clipboard-task-list-ltr-24-regular"></span>
+                          <a class="js-modal-trigger" data-target="modal-js-example">Create Task</a>
                         </article>
                       </div>
                     </div>
@@ -48,28 +53,29 @@
                         </article>
                       </div>
                     </div>
-                   </div>
-                    <div class="tile is-child box">
-                      <div class="columns">
-                        <div class="column ">
-                          <article class="tile is-5 is-child notification is-primary is-flex is-align-self-center">
-                            <div class="field is-align-items-center">
-                              <label class="label">Select a Team</label>
-                              <div class="control">
-                                <span class="iconify-inline icon is-large" data-icon="fluent:people-team-28-regular"></span>
-                                <div class="select">
-                                  <select>
-                                    <option>Select dropdown</option>
-                                    <option>With options</option>
-                                  </select>
-                                </div>
+                  </div>
+                  <div class="tile is-child box">
+                    <div class="columns">
+                      <div class="column ">
+                        <article class="tile is-5 is-child notification is-primary is-flex is-align-self-center">
+                          <div class="field is-align-items-center">
+                            <label class="label">Select a Team</label>
+                            <div class="control">
+                              <span class="iconify-inline icon is-large"
+                                data-icon="fluent:people-team-28-regular"></span>
+                              <div class="select">
+                                <select>
+                                  <option>Select dropdown</option>
+                                  <option>With options</option>
+                                </select>
                               </div>
                             </div>
-                          </article>
-                        </div>
+                          </div>
+                        </article>
                       </div>
-                    
                     </div>
+
+                  </div>
                 </div>
               </div>
               <div class="tile is-parent">
@@ -80,11 +86,11 @@
                         <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
                       </figure>
                     </div>
-                    <div class="card-content has-text-black ">
-                      < class="media-content">
-                        <p class="title is-4">John Smith</p>
-                        <p class="subtitle is-6">@johnsmith</p>
-                        <h1 class='box title is-1 has-text-centered has-background-link  '>Manager Dashboard</h1>
+                    <div class="card-content ">
+                      <div class="media-content has-text-centered">
+                        <p class="title is-4 has-text-black">John Smith</p>
+                        <p class="subtitle is-6 has-text-black">@johnsmith</p>
+                        <h1 class='box title is-2 has-background-link  '>Manager Dashboard</h1>
                       </div>
                     </div>
                   </div>
@@ -96,7 +102,74 @@
       </div>
     </div>
     </div>
-  
   </section>
+  <section id="modal-js-example" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card  ">
 
-</body>
+      <div class='hero m-auto is-large'>
+
+        <div class='container is-fluid columns is-centered'>
+
+          <div class='is-flex is-justify-content-space-evenly p-5 has-background-dark'>
+
+            <div class="columns is-desktop">
+
+              <div class="column ">
+                <div class='card m-1'>
+                  <div class="card-content">
+                    <h1 class='box title is-3 has-text-black has-text-centered has-background-link  '>Create a New Task
+                    </h1>
+                    <div class="columns">
+                      <div class="column">
+                        <div class="tags are-medium ">
+                          <span class="tag has-background-warning">Task</span>
+                        </div>
+                        <div class="tags are-medium ">
+                          <span class="tag has-background-warning">Deadline</span>
+                        </div>
+                        <div class="tags are-medium ">
+                          <span class="tag has-background-warning">Assign</span>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="field">
+                          <div class="control">
+                            <input class="input" type="text" placeholder="Text input">
+                          </div>
+                        </div>
+                        <div class="field">
+                          <div class="control">
+                            <input class="input" type="text" placeholder="Text input">
+                          </div>
+                        </div>
+                        <div class="field">
+                          <div class="control">
+                            <div class="select">
+                              <select>
+                                <option>Select from available open projects</option>
+                                <option>With options</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tags are-medium m-0">
+                      <span class="tag has-background-warning">Projects</span>
+                    </div>
+                    <textarea class="textarea is-info" placeholder="Info textarea"></textarea>
+                    <div class='field cardFoot m-2'>
+                      <button class="button is-success">Save Task</button>
+                      <button class="button">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
