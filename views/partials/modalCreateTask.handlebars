@@ -1,9 +1,11 @@
-<section id='taskModal' class='taskModal'>
+<section id='modalCreateTask' class='modal'>
   <div class='modal-background'></div>
   <div class='modal-card'>
     <div class='hero m-auto is-large'>
       <div class='container is-fluid columns is-centered'>
-        <div class='is-flex is-justify-content-space-evenly p-5 has-background-dark' >
+        <div
+          class='is-flex is-justify-content-space-evenly p-5 has-background-dark'
+        >
           <div class='columns is-desktop'>
             <div class='column'>
               <div class='card m-1'>
@@ -56,7 +58,8 @@
                     </div>
                   </div>
                   <div class='tags are-medium m-0'>
-                    <span class='tag has-background-warning'>Short Description of Task</span>
+                    <span class='tag has-background-warning'>Short Description
+                      of Task</span>
                   </div>
                   <textarea
                     class='textarea is-info'
@@ -64,7 +67,10 @@
                   ></textarea>
                   <div class='field cardFoot m-2'>
                     <button class='button is-success'>Save Task</button>
-                    <button class='button'>Close</button>
+                    <button
+                      onclick='closeModalTask()'
+                      class='button'
+                    >Close</button>
                   </div>
                 </div>
               </div>
