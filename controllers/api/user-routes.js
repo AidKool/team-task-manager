@@ -137,11 +137,12 @@ router.post('/login', async (req, res) => {
 
 router.post('/signup', async (req, res) => {
   try {
-    console.log(req.body)
     const userData = await User.create({
-      ...req.body,
+      first_name: req.body.firstName,
+      last_name: req.body.lastName,
+      username: req.body.username,
+      password: req.body.password,
       role: 'employee',
-      team_id: 0,
     });
     return req.session.save(() => {
       req.session.user = userData;
