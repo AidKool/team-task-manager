@@ -1,61 +1,73 @@
-<section id='modalCreateTask' class='modal'>
-  <div class='modal-background'></div>
-  <div class='modal-card'>
-    <div class='hero m-auto is-large'>
-      <div class='container is-fluid columns is-centered'>
+
+<section id="modalCreateTask" class="moda">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <div class="hero m-auto is-large">
+      <div class="container is-fluid columns is-centered">
         <div
-          class='is-flex is-justify-content-space-evenly p-5 has-background-dark'
-        >
-          <div class='columns is-desktop'>
-            <div class='column'>
-              <div class='card m-1'>
-                <div class='card-content'>
+          class="is-flex is-justify-content-space-evenly p-5 has-background-info-dark"
+        ><div class="columns is-desktop ">
+            <div class="column">
+              <div class="card">
+                <div class="card-content">
                   <h1
-                    class='box title is-3 has-text-black has-text-centered has-background-link'
+                    class="box title has-text-white has-text-centered has-background-info-dark"
                   >Create a New Task
                   </h1>
-                  <div class='columns'>
-                    <div class='column'>
-                      <div class='tags are-medium'>
-                        <span class='tag has-background-warning'>Task</span>
-                      </div>
-                      <div class='tags are-medium'>
-                        <span class='tag has-background-warning'>Deadline</span>
-                      </div>
-                      <div class='tags are-medium'>
-                        <span class='tag has-background-warning'>Assign</span>
+                  <div class="columns">
+                    <div class="column is-4 mr-1 mt-1">
+                      <div class="tags are-medium">
+                        <span class="tag has-background-warning">Task Name</span>
                       </div>
                     </div>
-                    <div class='column'>
-                      <div class='field'>
-                        <div class='control'>
+                    <div class="column is-8">
+                      <div class="field">
+                        <div class="control">
                           <input
-                            class='input'
-                            type='text'
-                            placeholder='Text input'
+                            class="input"
+                            type="text"
+                            placeholder="Text input"
                           />
                         </div>
                       </div>
-                      <div class='field'>
-                        <div class='control'>
+                    </div>
+                  </div>
+                  <div class="columns">
+                    <div class="column is-4 mr-1 mt-1">
+                      <div class="tags are-medium">
+                        <span class="tag has-background-warning">Deadline</span>
+                      </div>
+                    </div>
+                    <div class="column is-8">
+                      <div class="field">
+                        <div class="control">
                           <input
-                            class='input'
-                            type='text'
-                            placeholder='Text input'
+                            class="input"
+                            type="text"
+                            placeholder="Text input"
                           />
                         </div>
                       </div>
-                      <div class='field'>
+                    </div>
+                  </div>
+                   <div class="columns">
+                    <div class="column is-4 mr-1 mt-1">
+                      <div class="tags are-medium">
+                        <span class="tag has-background-warning">Assign</span>
+                      </div>
+                    </div>
+                     <div class="column is-8">
+                   <div class='field'>
                         <div class='control'>
                           <div class='select'>
                             <select>
-                              <option>Select from available open projects</option>
+                              <option>Select a Project</option>
                               <option>With options</option>
                             </select>
                           </div>
                         </div>
                       </div>
-                    </div>
+                  </div>
                   </div>
                   <div class='tags are-medium m-0'>
                     <span class='tag has-background-warning'>Short Description
@@ -65,12 +77,17 @@
                     class='textarea is-info'
                     placeholder='Info textarea'
                   ></textarea>
-                  <div class='field cardFoot m-2'>
-                    <button class='button is-success'>Save Task</button>
-                    <button
-                      onclick='closeModalTask()'
-                      class='button'
-                    >Close</button>
+                  <div class="field is-grouped is-grouped-centered mt-2">
+                    <p class="control">
+                      <a class="button is-primary">
+                        Save Task
+                      </a>
+                    </p>
+                    <p class="control">
+                      <a onclick="closeModalTask()" class="button is-light">
+                        Cancel
+                      </a>
+                    </p>
                   </div>
                 </div>
               </div>
