@@ -7,7 +7,7 @@ const userData = [
     username: 'marthaJ',
     password: 'password1',
     role: 'manager',
-    // team_id: 1,
+    team_id: 1,
   },
   {
     first_name: 'George',

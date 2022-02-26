@@ -2,7 +2,6 @@ const User = require('./User');
 const Task = require('./Task');
 const Team = require('./Team');
 const Project = require('./Project');
-const TeamProject = require('./TeamProject');
 
 User.hasMany(Task, {
   foreignKey: 'user_id',
@@ -20,18 +19,12 @@ User.belongsTo(Team, {
   foreignKey: 'team_id',
 });
 
-Project.belongsToMany(Team, {
-  through: {
-    model: TeamProject,
-    unique: true,
-  },
+Team.hasOne(Project, {
+  foreignKey: 'team_id',
 });
 
-Team.belongsTo(Project, {
-  through: {
-    model: TeamProject,
-    unique: true,
-  },
+Project.belongsTo(Team, {
+  foreignKey: 'team_id',
 });
 
-module.exports = { User, Task, Team, Project, TeamProject };
+module.exports = { User, Task, Team, Project };

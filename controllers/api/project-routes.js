@@ -4,14 +4,7 @@ const { Project, Team } = require('../../models');
 router.get('/', async (req, res) => {
   try {
     const projectsData = await Project.findAll({
-      include: [
-        {
-          model: Team,
-          attributes: {
-            exclude: ['id'],
-          },
-        },
-      ],
+      // include: [],
     });
     return res.status(200).json(projectsData);
   } catch (error) {
