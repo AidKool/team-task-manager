@@ -1,7 +1,15 @@
 const router = require('express').Router();
 
 router.get('/', async (req, res) => {
-  res.render('homepage');
+  if (req.session.loggedIn) {
+    if (req.session.user.role === 'manager') {
+      return res.render('managerPg');
+    } else if (req.session.user.role === 'employee') {
+      return res.render('teamMemberPg');
+    }
+  } else {
+    return res.redirect('/login');
+  }
 });
 
 router.get('/login', (req, res) => {
