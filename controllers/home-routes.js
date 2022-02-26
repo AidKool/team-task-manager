@@ -3,12 +3,12 @@ const router = require('express').Router();
 router.get('/', async (req, res) => {
   if (req.session.loggedIn) {
     if (req.session.user.role === 'manager') {
-      res.render('managerPg');
+      return res.render('managerPg');
     } else if (req.session.user.role === 'employee') {
-      res.render('teamMemberPg');
+      return res.render('teamMemberPg');
     }
   } else {
-    res.redirect('/login');
+    return res.redirect('/login');
   }
 });
 

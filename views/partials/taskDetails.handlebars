@@ -1,56 +1,64 @@
-<section id="modalTaskDetails" class="modal">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <div class="hero m-auto is-large">
-
-      <div class="container is-fluid columns is-centered">
-
+<section id='modalCreateProject' class='moal'>
+  <div class='modal-background'></div>
+  <div class='modal-card'>
+    <div class='hero m-auto is-large'>
+      <div class='container is-fluid columns is-centered'>
         <div
-          class="is-flex is-justify-content-space-evenly p-5 has-background-dark"
-        >
-
-          <div class="columns is-desktop">
-
-            <div class="column">
-              <div class="card m-1">
-                <div class="card-content">
+          class='is-flex is-justify-content-space-evenly p-5 has-background-info-dark'
+        ><div class='columns is-desktop'>
+            <div class='column'>
+              <div class='card'>
+                <div class='card-content'>
                   <h1
-                    class="box title is-3 has-text-black has-text-centered has-background-link"
-                  >Task Details</h1>
-                  <div class="columns">
-                    <div class="column">
-                      <div class="tags are-medium">
-                        <span class="tag has-background-warning">Task</span>
-                      </div>
-                      <div class="tags are-medium">
-                        <span class="tag has-background-warning">Deadline</span>
-                      </div>
-                      <div class="tags are-medium">
-                        <span class="tag has-background-warning">Status</span>
+                    class='box title has-text-white has-text-centered has-background-info-dark'
+                  >Task Details
+                  </h1>
+                  <div class='columns'>
+                    <div class='column is-4 mr-1 mt-1'>
+                      <div class='tags are-medium'>
+                        <span class='tag has-background-warning'>Task Name</span>
                       </div>
                     </div>
-                    <div class="column">
-                      <div class="field">
-                        <div class="control">
+                    <div class='column is-8'>
+                      <div class='field'>
+                        <div class='control'>
                           <input
-                            class="input"
-                            type="text"
-                            placeholder="Text input"
+                            class='input'
+                            type='text'
+                            placeholder='Text input'
                           />
                         </div>
                       </div>
-                      <div class="field">
-                        <div class="control">
+                    </div>
+                  </div>
+                  <div class='columns'>
+                    <div class='column is-4 mr-1 mt-1'>
+                      <div class='tags are-medium'>
+                        <span class='tag has-background-warning'>Deadline</span>
+                      </div>
+                    </div>
+                    <div class='column is-8'>
+                      <div class='field'>
+                        <div class='control'>
                           <input
-                            class="input"
-                            type="text"
-                            placeholder="Text input"
+                            class='input'
+                            type='text'
+                            placeholder='Text input'
                           />
                         </div>
                       </div>
-                      <div class="field">
-                        <div class="control">
-                          <div class="select">
+                    </div>
+                  </div>
+                  <div class='columns'>
+                    <div class='column is-4 mr-1 mt-1'>
+                      <div class='tags are-medium'>
+                        <span class='tag has-background-warning'>Status</span>
+                      </div>
+                    </div>
+                    <div class='column is-8'>
+                      <div class='field'>
+                        <div class='control'>
+                          <div class='select'>
                             <select>
                               <option>Change Task Status</option>
                               <option>Not Started</option>
@@ -62,21 +70,22 @@
                       </div>
                     </div>
                   </div>
-                  <div class="tags are-medium m-0">
-                    <span class="tag has-background-warning">Task Description</span>
+                  <div class='tags are-medium m-0'>
+                    <span class='tag has-background-warning'>Task Description
+                    </span>
                   </div>
                   <textarea
-                    class="textarea is-info"
-                    placeholder="Info textarea"
+                    class='textarea is-info'
+                    placeholder='Info textarea'
                   ></textarea>
-                  <div class="field is-grouped is-grouped-centered mt-2">
-                    <p class="control">
-                      <a class="button is-success">
+                  <div class='field is-grouped is-grouped-centered mt-2'>
+                    <p class='control'>
+                      <a class='button is-success'>
                         Update Status
                       </a>
                     </p>
-                    <p class="control">
-                      <a class="button is-danger">
+                    <p class='control'>
+                      <a onclick='closeTask()' class='button is-danger'>
                         Cancel
                       </a>
                     </p>
@@ -84,7 +93,6 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
