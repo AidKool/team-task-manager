@@ -20,27 +20,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
-  try {
-    const teamData = await Team.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: {
-            exclude: ['password'],
-          },
-        },
-      ],
-    });
-    if (!teamData) {
-      return res.status(404).json({ message: 'Team not found' });
-    }
-    return res.status(200).json(teamData);
-  } catch (error) {
-    return res.status(500).json(error);
-  }
-});
-
 router.get('/:id/tasks', async (req, res) => {
   try {
     const rawData = await sequelize.query(
