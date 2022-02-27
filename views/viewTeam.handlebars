@@ -43,25 +43,25 @@
                       <ul>
                         <li class="is-active has-text-weight-bold">
                           <a>
-                            <p class="mr-1">{{teamTasksData.all}}</p>
+                            <p class="mr-1 all-tasks">{{teamTasksData.all}}</p>
                             <span>All</span>
                           </a>
                         </li>
                         <li>
                           <a>
-                            <p class="mr-1 has-text-success ">{{teamTasksData.completed}}</p>
+                            <p class="mr-1 has-text-success completed">{{teamTasksData.completed}}</p>
                             <span>Completed</span>
                           </a>
                         </li>
                         <li>
                           <a>
-                            <p class="mr-1 has-text-warning-dark">{{teamTasksData.in_progress}}</p>
+                            <p class="mr-1 has-text-warning-dark in-progress">{{teamTasksData.in_progress}}</p>
                             <span>InProgress</span>
                           </a>
                         </li>
                         <li>
                           <a>
-                            <p class="mr-1 has-text-danger">{{teamTasksData.not_started}}</p>
+                            <p class="mr-1 has-text-danger not-started">{{teamTasksData.not_started}}</p>
                             <span>Not Started</span>
                           </a>
                         </li>
@@ -71,6 +71,9 @@
                 </div>
               </div>
             </div>
+            <div class="piechart-container is-flex is-justify-content-center mt-3">
+              <canvas class="piechart"></canvas>
+            </div>
             <div class='field m-3 '>
               <button class='button is-primary '>Create Team</button>
             </div>
@@ -79,7 +82,6 @@
       </div>
     </div>
   </div>
-  </div>
-  </div>
-  </div>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+<script src="/js/manager.js"></script>

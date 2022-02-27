@@ -63,7 +63,6 @@ router.get('/teams/:id', async (req, res) => {
         .concat({ status: 'all', tasks: allTasks })
         .map((entry) => Object.values(entry))
     );
-    console.log(teamTasksData);
     if (!teamData || tasksRawData.length === 0) {
       return res.status(404).json({ message: 'Team not found' });
     }
