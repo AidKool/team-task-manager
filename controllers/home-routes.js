@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const { QueryTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 const { Project, Team, User } = require('../models');
 
@@ -43,17 +45,30 @@ router.get('/teams/:id', async (req, res) => {
       include: [
         {
           model: User,
-          attributes: {
-            exclude: ['password'],
-          },
+          attributes: ['id', 'username'],
         },
       ],
     });
-    if (!teamData) {
+    const tasksRawData = await sequelize.query(
+      'SELECT status, COUNT(task.id) as tasks FROM team LEFT JOIN user ON team.id = user.team_id LEFT JOIN task ON user.id = task.user_id WHERE team.id = :id GROUP BY status',
+      { type: QueryTypes.SELECT, replacements: { id: req.params.id } }
+    );
+    const allTasks = tasksRawData.reduce(
+      (acc, current) => acc + current.tasks,
+      0
+    );
+    const teamTasksData = Object.fromEntries(
+      tasksRawData
+        .filter((entry) => entry.status)
+        .concat({ status: 'all', tasks: allTasks })
+        .map((entry) => Object.values(entry))
+    );
+    console.log(teamTasksData);
+    if (!teamData || tasksRawData.length === 0) {
       return res.status(404).json({ message: 'Team not found' });
     }
     const team = teamData.get({ plain: true });
-    return res.render('viewTeam', team);
+    return res.render('viewTeam', { team, teamTasksData });
     // return res.status(200).json(teamData);
   } catch (error) {
     return res.status(500).json(error);
