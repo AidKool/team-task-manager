@@ -21,21 +21,24 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id/tasks', async (req, res) => {
+  const teamID = Number(req.params.id);
   try {
     const rawData = await sequelize.query(
-      'SELECT team.id, project_id, name, task.task_title FROM team LEFT JOIN user ON team.id = user.team_id LEFT JOIN task ON user.id = task.user_id WHERE team.id = :id',
-      { type: QueryTypes.SELECT, replacements: { id: req.params.id } }
+      'SELECT team.name, task.task_title, task.id FROM team LEFT JOIN user ON team.id = user.team_id LEFT JOIN task ON user.id = task.user_id WHERE team.id = :id',
+      { type: QueryTypes.SELECT, replacements: { id: teamID } }
     );
     if (rawData.length === 0) {
       return res.status(404).json({ message: 'Team not found' });
     }
-    const { id, project_id, name } = rawData[0];
+    const { name } = rawData[0];
     const tasks = rawData
       .filter((item) => item.task_title)
-      .map((item) => item.task_title);
+      .map((item) => ({
+        task_title: item.task_title,
+        task_id: item.id,
+      }));
     const teamData = {
-      id,
-      project_id,
+      team_id: teamID,
       name,
       tasks,
     };
@@ -46,9 +49,10 @@ router.get('/:id/tasks', async (req, res) => {
 });
 
 router.get('/:id/tasks/search?', async (req, res) => {
+  const teamID = Number(req.params.id);
   try {
     const rawData = await sequelize.query(
-      'SELECT team.id, project_id, name, task.task_title FROM team LEFT JOIN user ON team.id = user.team_id LEFT JOIN task ON user.id = task.user_id WHERE team.id = :id AND task.status = :status',
+      'SELECT team.name, task.task_title, task.id FROM team LEFT JOIN user ON team.id = user.team_id LEFT JOIN task ON user.id = task.user_id WHERE team.id = :id AND task.status = :status',
       {
         type: QueryTypes.SELECT,
         replacements: { id: req.params.id, status: req.query.status },
@@ -57,13 +61,15 @@ router.get('/:id/tasks/search?', async (req, res) => {
     if (rawData.length === 0) {
       return res.status(404).json({ message: 'Data not found' });
     }
-    const { id, project_id, name } = rawData[0];
+    const { name } = rawData[0];
     const tasks = rawData
       .filter((item) => item.task_title)
-      .map((item) => item.task_title);
+      .map((item) => ({
+        task_title: item.task_title,
+        task_id: item.id,
+      }));
     const teamData = {
-      id,
-      project_id,
+      team_id: teamID,
       name,
       tasks,
     };
