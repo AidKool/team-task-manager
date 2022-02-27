@@ -20,65 +20,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id/tasks', async (req, res) => {
-  const teamID = Number(req.params.id);
-  try {
-    const rawData = await sequelize.query(
-      'SELECT team.name, task.task_title, task.id FROM team LEFT JOIN user ON team.id = user.team_id LEFT JOIN task ON user.id = task.user_id WHERE team.id = :id',
-      { type: QueryTypes.SELECT, replacements: { id: teamID } }
-    );
-    if (rawData.length === 0) {
-      return res.status(404).json({ message: 'Team not found' });
-    }
-    const { name } = rawData[0];
-    const tasks = rawData
-      .filter((item) => item.task_title)
-      .map((item) => ({
-        task_title: item.task_title,
-        task_id: item.id,
-      }));
-    const teamData = {
-      team_id: teamID,
-      name,
-      tasks,
-    };
-    return res.status(200).json(teamData);
-  } catch (error) {
-    return res.status(500).json(error);
-  }
-});
-
-router.get('/:id/tasks/search?', async (req, res) => {
-  const teamID = Number(req.params.id);
-  try {
-    const rawData = await sequelize.query(
-      'SELECT team.name, task.task_title, task.id FROM team LEFT JOIN user ON team.id = user.team_id LEFT JOIN task ON user.id = task.user_id WHERE team.id = :id AND task.status = :status',
-      {
-        type: QueryTypes.SELECT,
-        replacements: { id: req.params.id, status: req.query.status },
-      }
-    );
-    if (rawData.length === 0) {
-      return res.status(404).json({ message: 'Data not found' });
-    }
-    const { name } = rawData[0];
-    const tasks = rawData
-      .filter((item) => item.task_title)
-      .map((item) => ({
-        task_title: item.task_title,
-        task_id: item.id,
-      }));
-    const teamData = {
-      team_id: teamID,
-      name,
-      tasks,
-    };
-    return res.status(200).json(teamData);
-  } catch (error) {
-    return res.status(500).json(error);
-  }
-});
-
 router.post('/', async (req, res) => {
   try {
     await Team.create(req.body);
