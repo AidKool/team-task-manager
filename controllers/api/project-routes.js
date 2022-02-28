@@ -3,16 +3,7 @@ const { Project, Team } = require('../../models');
 
 router.get('/', async (req, res) => {
   try {
-    const projectsData = await Project.findAll({
-      include: [
-        {
-          model: Team,
-          attributes: {
-            exclude: ['id'],
-          },
-        },
-      ],
-    });
+    const projectsData = await Project.findAll({});
     return res.status(200).json(projectsData);
   } catch (error) {
     return res.status(500).json(error);
