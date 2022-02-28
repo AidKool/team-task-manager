@@ -40,6 +40,81 @@ router.get('/signup', (req, res) => {
   return res.render('signup');
 });
 
+router.get('/users/:id', async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.params.id);
+    if (!userData) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    return res.status(200).json(userData);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
+router.get('/users/:id/tasks', async (req, res) => {
+  try {
+    const userRawData = await User.findByPk(req.params.id, {
+      attributes: ['id', 'username', 'first_name', 'last_name', 'team_id'],
+      include: [
+        {
+          model: Task,
+          attributes: {
+            exclude: ['user_id'],
+          },
+        },
+      ],
+    });
+    if (!userRawData) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    const userData = userRawData.get({ plain: true });
+    const { tasks } = userData;
+
+    const completedTasks = tasks.filter((task) => task.status === 'completed');
+    const inProgressTasks = tasks.filter(
+      (task) => task.status === 'in_progress'
+    );
+    const notStartedTasks = tasks.filter(
+      (task) => task.status === 'not_started'
+    );
+
+    // console.log(userData);
+    return res.render('teamMemberPg', {
+      userData,
+      completedTasks,
+      inProgressTasks,
+      notStartedTasks,
+    });
+    // return res.status(200).json(userTasks);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
+router.get('/users/:id/tasks/search?', async (req, res) => {
+  try {
+    const userTasks = await User.findByPk(req.params.id, {
+      attributes: ['id', 'username'],
+      include: [
+        {
+          model: Task,
+          where: { status: req.query.status },
+          attributes: {
+            exclude: ['user_id'],
+          },
+        },
+      ],
+    });
+    if (!userTasks) {
+      return res.status(404).json({ message: 'Data not found' });
+    }
+    return res.status(200).json(userTasks);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
 router.get('/teams/:id', async (req, res) => {
   try {
     const teamUsersRawData = await Team.findByPk(req.params.id, {

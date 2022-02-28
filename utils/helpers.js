@@ -6,4 +6,14 @@ module.exports = {
     }
     return 'N/A';
   },
+  sanitiseStatus: (status) => {
+    switch (status) {
+      case 'completed':
+        return '🟢 Completed';
+      case 'in_progress':
+        return '🟡 In Progress';
+      case 'not_started':
+        return '🔴 Not Started';
+    }
+  },
 };
