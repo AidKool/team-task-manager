@@ -1,62 +1,75 @@
- {{>headerNav}}
-  <section class='hero m-auto is-large'>
-    <div class='container is-fluid columns is-centered'>
-      <div class='is-flex is-justify-content-space-evenly p-5 has-background-info-dark'>
-        <div class="columns is-desktop">
+{{>headerNav}}
+<section class='hero m-auto is-large'>
+  <div class='container is-fluid columns is-centered '>
+    <div class='card is-flex is-justify-content-space-evenly p-5 has-background-info-dark'>
+      <div class="columns is-desktop">
+        <div class="column is-8">
+          <div class='card m-1'>
+            <div class="card-content">
+              <h1 class='box title is-3 has-text-white has-text-centered has-background-info-dark '>Project Team</h1>
+              <div class='columns'>
+                <div class='column is-10'>
+                  <div class="mb-2">
+                    <span class='button is-static has-background-warning '>Project</span>
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <div class="select">
+                        <select id="project-list">
+                          {{#each projects as |project|}}
+                          <option>{{project.title}}</option>
+                          {{/each}}
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='columns'>
+                <div class='column is-12'>
+                  <div class="mb-2">
+                    <span class='button is-static has-background-warning '>Team Name</span>
+                  </div>
 
-          <div class="column ">
-            <div class='card m-1'>
-              <div class="card-content">
-                <h1 class='box title is-3 has-text-black has-text-centered has-background-info-dark '>Project Team</h1>
-                <div class="tags are-medium m-0">
-                  <span class="tag has-background-warning">Projects</span>
-                </div>
-                <div class="field">
-                  <div class="control">
-                    <div class="select">
-                      <select>
-                        <option>Select from available open projects</option>
-                        <option>With options</option>
-                      </select>
+                  <div class='field'>
+                    <div class='control'>
+                      <input class='input' type='text' placeholder='Team Name' />
                     </div>
                   </div>
                 </div>
-                <div class="tags are-medium m-0">
-                  <span class="tag has-background-warning">Team Name</span>
-                </div>
-                <div class="field">
-                  <div class="control">
-                    <input class="input" type="text" placeholder="Text input">
+              </div>
+              <div class='columns'>
+                <div class='column is-12'>
+                  <div class="mb-2">
+                    <span class='button is-static has-background-warning '>Employee</span>
                   </div>
-                </div>
-                <div class="tags are-medium m-0">
-                  <span class="tag has-background-warning">Employee</span>
-                </div>
-                <div class="field">
-                  <div class="control">
-                    <div class="select">
-                      <select>
-                        <option>Select from available employees</option>
-                        <option>With options</option>
-                      </select>
+                  <div class="field">
+                    <div class="control mb-0">
+                      <div class="select">
+                        <select>
+                          <option>Available Employees</option>
+                          <option>With options</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="field">
-                  <div class="control">
-                    <input class="input" type="text" placeholder="Text input">
-                  </div>
-                </div>
-                <div class='field m-2'>
-                  <button class='button is-primary'>Save Employee</button>
-                </div>
+              </div>
+              <div class="control mt-0">
+                <input class="input" type="text" value="employee role here" Employee Role>
+              </div>
+              <div class='field m-2'>
+                <button class='button is-primary'>Save Employee</button>
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="columns is-desktop mt-0">
           <div class="column ">
             <div class='card m-1'>
               <div class="card-content">
-                <h1 class='box title is-3 has-text-black has-text-centered has-background-info-dark'>Team Members</h1>
+                <h1 class='box title is-3 has-text-white has-text-centered has-background-info-dark'>Team Members</h1>
                 <div class="container ">
                   <div class="box has-background-warning">
 
@@ -74,7 +87,4 @@
         </div>
       </div>
     </div>
-  </section>
-
-
-
+</section>
