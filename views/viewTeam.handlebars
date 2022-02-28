@@ -8,24 +8,19 @@
           <div class='card m-1'>
             <div class="card-content">
               <h1 class='box title is-3 has-text-black has-text-centered has-background-info-dark '>Project Team</h1>
-              <div class="box has-background-warning">
-
-                <div class="box ">
-
-                </div>
-              </div>
-              <div class="box has-background-warning">
-
-                <div class="box ">
-
-                </div>
-              </div>
-              <div class="box has-background-warning">
-
-                <div class="box ">
-
-                </div>
-              </div>
+              <ul>
+                {{#each teamData.usersData as |user|}}
+                <li class="box has-background-warning">
+                  <img src='https://bulma.io/images/placeholders/64x64.png' />
+                  <div class="box">{{user.first_name}} {{user.last_name}}</div>
+                  <div class="user-tasks">
+                    <p class="has-text-weight-bold">User Tasks</p>
+                    <span class="box">{{user.completed_tasks}}/{{user.total_tasks}}</span>
+                    <span class="box">{{percentage user.completed_tasks user.total_tasks}}</span>
+                  </div>
+                </li>
+                {{/each}}
+              </ul>
             </div>
           </div>
         </div>

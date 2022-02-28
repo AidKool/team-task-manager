@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { QueryTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-const { Project, Team, User } = require('../models');
+const { Project, Team, User, Task } = require('../models');
 
 router.get('/', async (req, res) => {
   if (req.session.loggedIn) {
@@ -41,33 +41,60 @@ router.get('/signup', (req, res) => {
 
 router.get('/teams/:id', async (req, res) => {
   try {
-    const teamData = await Team.findByPk(req.params.id, {
+    const teamUsersRawData = await Team.findByPk(req.params.id, {
       include: [
         {
           model: User,
-          attributes: ['id', 'username'],
+          attributes: ['id', 'first_name', 'last_name'],
+          include: [
+            {
+              model: Task,
+              attributes: ['status'],
+            },
+          ],
         },
       ],
     });
+
     const tasksRawData = await sequelize.query(
       'SELECT status, COUNT(task.id) as tasks FROM team LEFT JOIN user ON team.id = user.team_id LEFT JOIN task ON user.id = task.user_id WHERE team.id = :id GROUP BY status',
       { type: QueryTypes.SELECT, replacements: { id: req.params.id } }
     );
-    const allTasks = tasksRawData.reduce(
+    if (!teamUsersRawData || tasksRawData.length === 0) {
+      return res.status(404).json({ message: 'Team not found' });
+    }
+
+    const numberTeamTasks = tasksRawData.reduce(
       (acc, current) => acc + current.tasks,
       0
     );
+
     const teamTasksData = Object.fromEntries(
       tasksRawData
         .filter((entry) => entry.status)
-        .concat({ status: 'all', tasks: allTasks })
+        .concat({ status: 'all', tasks: numberTeamTasks })
         .map((entry) => Object.values(entry))
     );
-    if (!teamData || tasksRawData.length === 0) {
-      return res.status(404).json({ message: 'Team not found' });
-    }
-    const team = teamData.get({ plain: true });
-    return res.render('viewTeam', { team, teamTasksData });
+
+    const { id, name, users } = teamUsersRawData;
+
+    const usersData = users.map((user) => ({
+      id: user.id,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      total_tasks: user.tasks.length,
+      completed_tasks: user.tasks.reduce((acc, current) => {
+        if (current.status === 'completed') {
+          // eslint-disable-next-line no-param-reassign
+          acc += 1;
+        }
+        return acc;
+      }, 0),
+    }));
+
+    const teamData = { id, name, usersData };
+
+    return res.render('viewTeam', { teamData, teamTasksData });
     // return res.status(200).json(teamData);
   } catch (error) {
     return res.status(500).json(error);
