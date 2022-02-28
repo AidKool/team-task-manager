@@ -9,7 +9,7 @@ function styles() {
     purgecss({
       content: ['./views/**/*.handlebars'],
       keyframes: true,
-      safelist: ['is-active'],
+      safelist: ['is-active', 'active'],
     }),
     autoprefixer,
   ];

@@ -54,27 +54,27 @@
                   <div class="column">
                     <div class="tabs is-toggle is-fullwidth has-background-link-light mb-0">
                       <ul>
-                        <li class="is-active has-text-weight-bold">
+                        <li class="table-btn is-active" data-id="all-tasks">
                           <a>
-                            <p class="mr-1">60</p>
+                            <p class="mr-1">{{userData.tasks.length}}</p>
                             <span>All</span>
                           </a>
                         </li>
-                        <li>
+                        <li class="table-btn" data-id="completed-tasks">
                           <a>
-                            <p class="mr-1 has-text-success ">20</p>
+                            <p class="mr-1 has-text-success ">{{completedTasks.length}}</p>
                             <span>Completed</span>
                           </a>
                         </li>
-                        <li>
+                        <li class="table-btn" data-id="in-progress-tasks">
                           <a>
-                            <p class="mr-1 has-text-warning-dark">20</p>
+                            <p class="mr-1 has-text-warning-dark">{{inProgressTasks.length}}</p>
                             <span>InProgress</span>
                           </a>
                         </li>
-                        <li>
+                        <li class="table-btn" data-id="not-started-tasks">
                           <a>
-                            <p class="mr-1 has-text-danger">20</p>
+                            <p class="mr-1 has-text-danger">{{notStartedTasks.length}}</p>
                             <span>Not Started</span>
                           </a>
                         </li>
@@ -82,68 +82,92 @@
                     </div>
                     <div class=" box">
                       <div class="column is-align-items-center">
-                        <table class="table is-scrollable">
+                        <table class="table employee-tasks-table is-scrollable is-hidden active" id="all-tasks">
                           <thead>
                             <tr>
-                              <th><abbr title="Position">Pos</abbr></th>
+                              <th><abbr title="Position">Task ID</abbr></th>
                               <th>Task Title</th>
                               <th>Task Status</th>
                             </tr>
                           </thead>
-                          <tfoot>
+                          <tbody>
+                            {{#each userData.tasks as |task|}}
                             <tr>
-                              <th><abbr title="Position">Pos</abbr></th>
+                              <th>{{task.id}}</th>
+                              <td>
+                                <p>{{task.task_title}}</p>
+                              </td>
+                              <td>
+                                <p>{{task.status}}</p>
+                              </td>
+                            </tr>
+                            {{/each}}
+                          </tbody>
+                        </table>
+                        <table class="table employee-tasks-table is-scrollable is-hidden" id="completed-tasks">
+                          <thead>
+                            <tr>
+                              <th><abbr title="Position">Task ID</abbr></th>
                               <th>Task Title</th>
                               <th>Task Status</th>
                             </tr>
-                          </tfoot>
+                          </thead>
                           <tbody>
+                            {{#each completedTasks as |task|}}
                             <tr>
-                              <th>1</th>
+                              <th>{{task.id}}</th>
                               <td>
-                                <p>task one of many many many</p>
+                                <p>{{task.task_title}}</p>
                               </td>
                               <td>
-                                <p>Not Started</p>
+                                <p>{{task.status}}</p>
                               </td>
                             </tr>
+                            {{/each}}
+                          </tbody>
+                        </table>
+                        <table class="table employee-tasks-table is-scrollable is-hidden" id="in-progress-tasks">
+                          <thead>
                             <tr>
-                              <th>2</th>
+                              <th><abbr title="Position">Task ID</abbr></th>
+                              <th>Task Title</th>
+                              <th>Task Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {{#each inProgressTasks as |task|}}
+                            <tr>
+                              <th>{{task.id}}</th>
                               <td>
-                                <p>task two of many many many</p>
+                                <p>{{task.task_title}}</p>
                               </td>
                               <td>
-                                <p>Not Started</p>
+                                <p>{{task.status}}</p>
                               </td>
                             </tr>
+                            {{/each}}
+                          </tbody>
+                        </table>
+                        <table class="table employee-tasks-table is-scrollable is-hidden" id="not-started-tasks">
+                          <thead>
                             <tr>
-                              <th>3</th>
+                              <th><abbr title="Position">Task ID</abbr></th>
+                              <th>Task Title</th>
+                              <th>Task Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {{#each notStartedTasks as |task|}}
+                            <tr>
+                              <th>{{task.id}}</th>
                               <td>
-                                <p>task threeof many many many</p>
+                                <p>{{task.task_title}}</p>
                               </td>
                               <td>
-                                <p>Not Started</p>
+                                <p>{{task.status}}</p>
                               </td>
                             </tr>
-                            <tr>
-                              <th>4</th>
-                              <td>
-                                <p>task four of many many many</p>
-                              </td>
-                              <td>
-                                <p>Not Started</p>
-                              </td>
-                            </tr>
-                            <tr>
-                              <th>5</th>
-                              <td>
-                                <p>task five of many many many</p>
-                              </td>
-                              <td>
-                                <p>Not Started</p>
-                              </td>
-                            </tr>
-
+                            {{/each}}
                           </tbody>
                         </table>
                       </div>
@@ -158,3 +182,4 @@
     </div>
   </div>
 </section>
+<script src="/js/employeePg.js"></script>

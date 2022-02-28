@@ -69,8 +69,23 @@ router.get('/users/:id/tasks', async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
     const userData = userRawData.get({ plain: true });
-    console.log(userData);
-    return res.render('teamMemberPg', { userData });
+    const { tasks } = userData;
+
+    const completedTasks = tasks.filter((task) => task.status === 'completed');
+    const inProgressTasks = tasks.filter(
+      (task) => task.status === 'in_progress'
+    );
+    const notStartedTasks = tasks.filter(
+      (task) => task.status === 'not_started'
+    );
+
+    // console.log(userData);
+    return res.render('teamMemberPg', {
+      userData,
+      completedTasks,
+      inProgressTasks,
+      notStartedTasks,
+    });
     // return res.status(200).json(userTasks);
   } catch (error) {
     return res.status(500).json(error);
