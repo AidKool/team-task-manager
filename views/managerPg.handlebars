@@ -1,3 +1,4 @@
+{{>headerNav}}
 <section class='hero m-auto is-large my-5'>
   <div class=' container is-fluid columns is-centered'>
     <div class='card is-flex is-justify-content-space-evenly p-5 has-background-info-dark'>
@@ -49,13 +50,14 @@
                 <form class="column card m-1">
                   <div class="tile is-12 is-parent notification is-primary ">
                     <div class="field ">
-                      <label class="label has-text-white">Select a Project</label>
+                      <label class="label has-text-white">View a Project</label>
                       <div class="control">
                         <span class="iconify-inline icon is-large" data-icon="icons8:parallel-tasks"></span>
                         <div class="select">
-                           <select id="project-list">
+                          <select id="project-list" onchange="location = this.value">
+                            <option disabled selected value="/">Select a Project</option>
                             {{#each projects as |project|}}
-                            <option>{{project.title}}</option>
+                            <option value="/teams/{{project.team_id}}">{{project.title}}</option>
                             {{/each}}
                           </select>
                         </div>
