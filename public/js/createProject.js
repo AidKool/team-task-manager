@@ -19,7 +19,7 @@ const createProjectHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
-      document.location.replace('/managerPg');
+      document.location.reload();
       alert('Project created succesfully!');
     } else {
       alert(response.statusText);
