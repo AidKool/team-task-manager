@@ -21,5 +21,5 @@ const createProjectHandler = async (event) => {
 };
 
 document
-  .getElementById('#create-project-btn')
+  .querySelector('#create-project-btn')
   .addEventListener('click', createProjectHandler);
