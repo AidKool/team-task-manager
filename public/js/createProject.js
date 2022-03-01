@@ -6,7 +6,6 @@ const createProjectHandler = async (event) => {
     .value.trim();
   const teamElement = document.querySelector('#assign-team');
   const teamID = teamElement.options[teamElement.selectedIndex].dataset.id;
-  console.log(teamID.options[teamID.selectedIndex]);
 
   if (projectTitle && projectDeadline && teamID) {
     const response = await fetch('/api/projects', {
@@ -14,8 +13,9 @@ const createProjectHandler = async (event) => {
       body: JSON.stringify({
         projectTitle,
         projectDeadline,
-        TeamSelected: teamID,
+        teamID,
       }),
+
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
@@ -28,5 +28,5 @@ const createProjectHandler = async (event) => {
 };
 
 document
-  .querySelector('#create-project-btn')
-  .addEventListener('click', createProjectHandler);
+  .querySelector('#project-form')
+  .addEventListener('submit', createProjectHandler);
