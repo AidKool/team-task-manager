@@ -1,7 +1,7 @@
 {{>headerNav}}
 <section class='hero m-auto is-large '>
-  <div class='container is-fluid columns is-centered'>
-    <div class='is-flex is-justify-content-space-evenly p-5 has-background-info-dark '>
+  <div class='container  is-fluid columns is-centered'>
+    <div class='is-flex card is-justify-content-space-evenly p-5 has-background-info-dark '>
       <div class="columns is-desktop">
         <div class="tile is-ancestor m-1">
           <div class="tile is-parent is-align-items-center">
@@ -9,7 +9,7 @@
               <div class="card">
                 <div class="card-image">
                   <figure class="image is-4by3">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                    <img src="/img/avatar.jpg" alt="Placeholder image">
                   </figure>
                   <div class="file is-small is-right is-success">
                     <label class="file-label">
@@ -28,7 +28,7 @@
                 <div class="card-content ">
                   <div class="media-content has-text-centered">
                     <p class="title is-4 has-text-black">{{userData.first_name}} {{userData.last_name}}</p>
-                    <p class="subtitle is-6 has-text-black">@{{userData.username}}</p>
+                    <p class="subtitle is-6 has-text-black">{{userData.username}}</p>
                     <div class="is-centered">
                       <div class='buttons '>
                         <a href="/teams/{{userData.team_id}}"
@@ -62,19 +62,19 @@
                         </li>
                         <li class="table-btn" data-id="completed-tasks">
                           <a>
-                            <p class="mr-1 has-text-success ">{{completedTasks.length}}</p>
+                            <p class="mr-1 tag is-success mr-1 has-text-white">{{completedTasks.length}}</p>
                             <span>Completed</span>
                           </a>
                         </li>
                         <li class="table-btn" data-id="in-progress-tasks">
                           <a>
-                            <p class="mr-1 has-text-warning-dark">{{inProgressTasks.length}}</p>
+                            <p class="tag is-warning mr-1 has-text-warning-white">{{inProgressTasks.length}}</p>
                             <span>InProgress</span>
                           </a>
                         </li>
                         <li class="table-btn" data-id="not-started-tasks">
                           <a>
-                            <p class="mr-1 has-text-danger">{{notStartedTasks.length}}</p>
+                            <p class="tag is-danger mr-1 has-text-white">{{notStartedTasks.length}}</p>
                             <span>Not Started</span>
                           </a>
                         </li>
