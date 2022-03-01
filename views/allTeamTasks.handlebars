@@ -14,25 +14,25 @@
                   <div class="column">
                     <div class="tabs is-toggle is-fullwidth has-background-link-light mb-0">
                       <ul>
-                        <li class="is-active has-text-weight-bold">
+                        <li class="table-btn is-active" data-id="all-tasks">
                           <a>
                             <p class="mr-1">{{tasks.length}}</p>
                             <span>All</span>
                           </a>
                         </li>
-                        <li>
+                        <li class="table-btn" data-id="completed-tasks">
                           <a>
                             <p class="mr-1 has-text-success ">{{completedTasks.length}}</p>
                             <span>Completed</span>
                           </a>
                         </li>
-                        <li>
+                        <li class="table-btn" data-id="in-progress-tasks">
                           <a>
                             <p class="mr-1 has-text-warning-dark">{{inProgressTasks.length}}</p>
                             <span>InProgress</span>
                           </a>
                         </li>
-                        <li>
+                        <li class="table-btn" data-id="not-started-tasks">
                           <a>
                             <p class="mr-1 has-text-danger">{{notStartedTasks.length}}</p>
                             <span>Not Started</span>
@@ -42,7 +42,7 @@
                     </div>
                     <div class=" box">
                       <div class="column is-align-items-center">
-                        <table class="table is-scrollable">
+                        <table class="table is-scrollable team-tasks-table is-hidden active" id="all-tasks">
                           <thead>
                             <tr>
                               <th><abbr title="Position">Pos</abbr></th>
@@ -53,6 +53,81 @@
                           </thead>
                           <tbody>
                             {{#each tasks as |task|}}
+                            <tr>
+                              <th>{{task.task_id}}</th>
+                              <td>
+                                <p>{{task.task_title}}</p>
+                              </td>
+                              <td>
+                                {{formatDate task.task_deadline}}
+                              </td>
+                              <td>
+                                <p>{{sanitiseStatus task.task_status}}</p>
+                              </td>
+                            </tr>
+                            {{/each}}
+                          </tbody>
+                        </table>
+                        <table class="table team-tasks-table is-scrollable is-hidden" id="completed-tasks">
+                          <thead>
+                            <tr>
+                              <th><abbr title="Position">Task ID</abbr></th>
+                              <th>Task Title</th>
+                              <th>Task Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {{#each completedTasks as |task|}}
+                            <tr>
+                              <th>{{task.task_id}}</th>
+                              <td>
+                                <p>{{task.task_title}}</p>
+                              </td>
+                              <td>
+                                {{formatDate task.task_deadline}}
+                              </td>
+                              <td>
+                                <p>{{sanitiseStatus task.task_status}}</p>
+                              </td>
+                            </tr>
+                            {{/each}}
+                          </tbody>
+                        </table>
+                        <table class="table team-tasks-table is-scrollable is-hidden" id="in-progress-tasks">
+                          <thead>
+                            <tr>
+                              <th><abbr title="Position">Task ID</abbr></th>
+                              <th>Task Title</th>
+                              <th>Task Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {{#each inProgressTasks as |task|}}
+                            <tr>
+                              <th>{{task.task_id}}</th>
+                              <td>
+                                <p>{{task.task_title}}</p>
+                              </td>
+                              <td>
+                                {{formatDate task.task_deadline}}
+                              </td>
+                              <td>
+                                <p>{{sanitiseStatus task.task_status}}</p>
+                              </td>
+                            </tr>
+                            {{/each}}
+                          </tbody>
+                        </table>
+                        <table class="table team-tasks-table is-scrollable is-hidden" id="not-started-tasks">
+                          <thead>
+                            <tr>
+                              <th><abbr title="Position">Task ID</abbr></th>
+                              <th>Task Title</th>
+                              <th>Task Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {{#each notStartedTasks as |task|}}
                             <tr>
                               <th>{{task.task_id}}</th>
                               <td>
@@ -84,3 +159,4 @@
     </div>
   </div>
 </section>
+<script src="/js/teamPg.js"></script>
