@@ -13,9 +13,11 @@
                   <div class="container card max-width   has-background-info-dark column mt-2">
                     <div class="level is-flex columns">
                       <img class="mx-2 is-white" src='https://bulma.io/images/placeholders/48x48.png' />
-                      <div class="tag is-white is-medium column is-6">{{user.first_name}} {{user.last_name}}</div>
+                      <div class="tag is-white is-medium column is-6"><a
+                          href='/users/{{user.id}}/tasks'>{{user.first_name}} {{user.last_name}}</a></div>
                       <div class=" user-tasks is-flex is-flex-direction-column mr-2 column is-3">
-                        <span class="tag is-white is-small has-background-warning">{{user.completed_tasks}}/{{user.total_tasks}}</span>
+                        <span
+                          class="tag is-white is-small has-background-warning">{{user.completed_tasks}}/{{user.total_tasks}}</span>
                         <span class="tag is-white is-small has-background-primary">{{percentage user.completed_tasks
                           user.total_tasks}}</span>
                       </div>
@@ -30,7 +32,7 @@
 
         <div class="tile is-parent columns  m-1">
           <div class="tile is-child column  is-12 box has-text-centered">
-           <h1 class='box title is-3 has-text-white has-background-info-dark  '>Team Statistics</h1>
+            <h1 class='box title is-3 has-text-white has-background-info-dark  '>Team Statistics</h1>
             <div class="tile is-child box has-background-info-dark ">
               <p class="is-size-5 has-text-white">Current Status of All Tasks</p>
               <div class="columns">
@@ -51,7 +53,8 @@
                       </li>
                       <li>
                         <a>
-                          <p class="tag is-warning mr-1 has-text-warning-white in-progress">{{teamTasksData.in_progress}}</p>
+                          <p class="tag is-warning mr-1 has-text-warning-white in-progress">
+                            {{teamTasksData.in_progress}}</p>
                           <span>InProgress</span>
                         </a>
                       </li>
