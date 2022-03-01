@@ -4,6 +4,7 @@ const createProjectHandler = async (event) => {
   const projectDeadline = document
     .querySelector('#project-deadline')
     .value.trim();
+  // const TeamSelected = document.querySelector('#project-list').value.trim();
 
   if (projectTitle && projectDeadline) {
     const response = await fetch('/api/projects', {
