@@ -28,5 +28,5 @@ const createTaskHandler = async (event) => {
 };
 
 document
-  .getElementById('#create-project-btn')
-  .addEventListener('click', createProjectHandler);
+  .getElementById('#save-task')
+  .addEventListener('click', createTaskHandler);
