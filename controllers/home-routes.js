@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 
         const teamsData = await Team.findAll({});
         const teams = teamsData.map((team) => team.get({ plain: true }));
-        console.log(projects);
+        console.log(teams);
         return res.render('managerPg', { projects, teams });
       } catch (error) {
         return res.status(500).json(error);

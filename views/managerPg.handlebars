@@ -54,8 +54,12 @@
                       <div class="control">
                         <span class="iconify-inline icon is-large" data-icon="icons8:parallel-tasks"></span>
                         <div class="select">
+<<<<<<< HEAD
                           <select id="project-list" onchange="location = this.value">
                             <option disabled selected value="/">Select a Project</option>
+=======
+                          <select id="project-list">
+>>>>>>> 7d27903214de817c93fa59e41b02f6138e255fe1
                             {{#each projects as |project|}}
                             <option value="/teams/{{project.team_id}}">{{project.title}}</option>
                             {{/each}}
