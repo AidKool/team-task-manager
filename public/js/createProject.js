@@ -4,12 +4,12 @@ const createProjectHandler = async (event) => {
   const projectDeadline = document
     .querySelector('#project-deadline')
     .value.trim();
-  // const TeamSelected = document.querySelector('#project-list').value.trim();
+  const TeamSelected = document.querySelector('#team-list').value.trim();
 
-  if (projectTitle && projectDeadline) {
+  if (projectTitle && projectDeadline && TeamSelected) {
     const response = await fetch('/api/projects', {
       method: 'POST',
-      body: JSON.stringify({ projectTitle, projectDeadline }),
+      body: JSON.stringify({ projectTitle, projectDeadline, TeamSelected }),
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
