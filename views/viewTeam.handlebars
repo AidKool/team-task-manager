@@ -1,81 +1,89 @@
 {{>headerNav}}
-<section class='hero m-auto is-large'>
-  <div class='container is-fluid columns is-centered'>
-    <div class='is-flex is-justify-content-space-evenly p-5 has-background-info-dark'>
-      <div class="columns is-desktop">
-
-        <div class="column ">
-          <div class='card m-1'>
-            <div class="card-content">
-              <h1 class='box title is-3 has-text-black has-text-centered has-background-info-dark '>Project Team</h1>
-              <ul>
-                {{#each teamData.usersData as |user|}}
-                <li class="box has-background-warning">
-                  <img src='https://bulma.io/images/placeholders/64x64.png' />
-                  <a class="box" href='/users/{{user.id}}/tasks'>{{user.first_name}} {{user.last_name}}</a>
-                  <div class="user-tasks">
-                    <p class="has-text-weight-bold">User Tasks</p>
-                    <span class="box">{{user.completed_tasks}}/{{user.total_tasks}}</span>
-                    <span class="box">{{percentage user.completed_tasks user.total_tasks}}</span>
+<section class='hero m-auto is-large '>
+  <div class=' container is-fluid columns is-centered '>
+    <div class='card p-5 has-background-info-dark'>
+      <div class="columns is-desktop ">
+        <div class="tile is-ancestor m-1">
+          <div class="tile is-12 is-vertical is-parent">
+            <div class="tile is-child box">
+              <div class="columns has-text-centered ">
+                <div class="column m-auto">
+                  <h1 class='box title is-3 has-text-white has-background-info-dark max-width '>Team Members</h1>
+                  {{#each teamData.usersData as |user|}}
+                  <div class="container card max-width   has-background-info-dark column mt-2">
+                    <div class="level is-flex columns">
+                      <img class="mx-2 is-white" src='https://bulma.io/images/placeholders/48x48.png' />
+                      <div class="tag is-white is-medium column is-6">{{user.first_name}} {{user.last_name}}</div>
+                      <div class=" user-tasks is-flex is-flex-direction-column mr-2 column is-3">
+                        <span class="tag is-white is-small has-background-warning">{{user.completed_tasks}}/{{user.total_tasks}}</span>
+                        <span class="tag is-white is-small has-background-primary">{{percentage user.completed_tasks
+                          user.total_tasks}}</span>
+                      </div>
+                    </div>
                   </div>
-                </li>
-                {{/each}}
-              </ul>
+                  {{/each}}
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="column ">
-        <div class='card m-1'>
-          <div class="card-content">
-            <h1 class='box title is-3 has-text-black has-text-centered has-background-info-dark'>Team Statistics</h1>
-            <div class="container ">
-              <div class="tile is-child box has-background-warning ">
-                <p class="is-size-5">Team Status</p>
-                <div class="columns">
-                  <div class="column">
-                    <div class="tabs is-toggle is-fullwidth has-background-link-light mb-0">
-                      <ul>
-                        <li class="is-active has-text-weight-bold">
-                          <a>
-                            <p class="mr-1 all-tasks">{{teamTasksData.all}}</p>
-                            <span>All</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a>
-                            <p class="mr-1 has-text-success completed">{{teamTasksData.completed}}</p>
-                            <span>Completed</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a>
-                            <p class="mr-1 has-text-warning-dark in-progress">{{teamTasksData.in_progress}}</p>
-                            <span>InProgress</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a>
-                            <p class="mr-1 has-text-danger not-started">{{teamTasksData.not_started}}</p>
-                            <span>Not Started</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
+
+        <div class="tile is-parent columns  m-1">
+          <div class="tile is-child column  is-12 box has-text-centered">
+           <h1 class='box title is-3 has-text-white has-background-info-dark  '>Team Statistics</h1>
+            <div class="tile is-child box has-background-info-dark ">
+              <p class="is-size-5 has-text-white">Current Status of All Tasks</p>
+              <div class="columns">
+                <div class="column">
+                  <div class="tabs is-toggle is-fullwidth has-background-link-light mb-0 is-size-7">
+                    <ul>
+                      <li class="is-active has-text-weight-bold ">
+                        <a>
+                          <p class="mr-1 is-link all-tasks">{{teamTasksData.all}}</p>
+                          <span>All</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a>
+                          <p class="tag is-success mr-1  has-text-white completed">{{teamTasksData.completed}}</p>
+                          <span>Completed</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a>
+                          <p class="tag is-warning mr-1 has-text-warning-white in-progress">{{teamTasksData.in_progress}}</p>
+                          <span>InProgress</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a>
+                          <p class="tag is-danger mr-1 has-text-white not-started">{{teamTasksData.not_started}}</p>
+                          <span>Not Started</span>
+                        </a>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="piechart-container is-flex is-justify-content-center mt-3">
-              <canvas class="piechart"></canvas>
-            </div>
-            <div class='field m-3 is-flex is-justify-content-center'>
-              <a href="/teams/{{team.id}}/tasks" class='button is-link'>All Team Tasks</a>
+
+
+            <div class="card-content columns is-flex is-justify-content-center">
+              <div class="media-content column is-desktop is-8">
+                <div class="piechart-container mt-3">
+                  <canvas class="piechart"></canvas>
+                </div>
+                <div class='field m-3'>
+                  <a href="/teams/{{team.id}}/tasks" class='button is-link'>All Team Tasks</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  </div>
   </div>
 </section>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
