@@ -61,6 +61,30 @@
                       </div>
                     </div>
                   </div>
+
+                  <div class='columns'>
+                    <div class='column is-4'>
+                      <div>
+                        <span
+                          class='button is-static has-background-warning'
+                        >Assign</span>
+                      </div>
+                    </div>
+                    <div class='column is-12 mr-1'>
+                      <div class='field'>
+                        <div class='control'>
+                          <div class='select'>
+                            <select id='task-list'>
+                              {{#each tasks as |task|}}
+                                <option>{{task.task_title}}</option>
+                              {{/each}}
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                   <div class='field is-grouped is-grouped-centered'>
                     <p class='control'>
                       <a id='create-project-btn' class='button is-primary'>
