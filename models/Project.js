@@ -16,6 +16,10 @@ Project.init(
       allowNull: false,
       unique: true,
     },
+    project_deadline: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+    },
     team_id: {
       type: DataTypes.INTEGER,
       references: {
