@@ -15,6 +15,7 @@ router.get('/', async (req, res) => {
 
         const teamsData = await Team.findAll({});
         const teams = teamsData.map((team) => team.get({ plain: true }));
+        console.log(projects);
         return res.render('managerPg', { projects, teams });
       } catch (error) {
         return res.status(500).json(error);
@@ -37,6 +38,81 @@ router.get('/signup', (req, res) => {
     return res.redirect('/');
   }
   return res.render('signup');
+});
+
+router.get('/users/:id', async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.params.id);
+    if (!userData) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    return res.status(200).json(userData);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
+router.get('/users/:id/tasks', async (req, res) => {
+  try {
+    const userRawData = await User.findByPk(req.params.id, {
+      attributes: ['id', 'username', 'first_name', 'last_name', 'team_id'],
+      include: [
+        {
+          model: Task,
+          attributes: {
+            exclude: ['user_id'],
+          },
+        },
+      ],
+    });
+    if (!userRawData) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    const userData = userRawData.get({ plain: true });
+    const { tasks } = userData;
+
+    const completedTasks = tasks.filter((task) => task.status === 'completed');
+    const inProgressTasks = tasks.filter(
+      (task) => task.status === 'in_progress'
+    );
+    const notStartedTasks = tasks.filter(
+      (task) => task.status === 'not_started'
+    );
+
+    // console.log(userData);
+    return res.render('teamMemberPg', {
+      userData,
+      completedTasks,
+      inProgressTasks,
+      notStartedTasks,
+    });
+    // return res.status(200).json(userTasks);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
+router.get('/users/:id/tasks/search?', async (req, res) => {
+  try {
+    const userTasks = await User.findByPk(req.params.id, {
+      attributes: ['id', 'username'],
+      include: [
+        {
+          model: Task,
+          where: { status: req.query.status },
+          attributes: {
+            exclude: ['user_id'],
+          },
+        },
+      ],
+    });
+    if (!userTasks) {
+      return res.status(404).json({ message: 'Data not found' });
+    }
+    return res.status(200).json(userTasks);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
 });
 
 router.get('/teams/:id', async (req, res) => {
@@ -105,7 +181,7 @@ router.get('/teams/:id/tasks', async (req, res) => {
   const teamID = Number(req.params.id);
   try {
     const rawData = await sequelize.query(
-      'SELECT team.name, task.task_title, task.id FROM team LEFT JOIN user ON team.id = user.team_id LEFT JOIN task ON user.id = task.user_id WHERE team.id = :id',
+      'SELECT team.name, task.id, task.task_title, task.status, task_deadline FROM team LEFT JOIN user ON team.id = user.team_id LEFT JOIN task ON user.id = task.user_id WHERE team.id = :id',
       { type: QueryTypes.SELECT, replacements: { id: teamID } }
     );
     if (rawData.length === 0) {
@@ -117,13 +193,31 @@ router.get('/teams/:id/tasks', async (req, res) => {
       .map((item) => ({
         task_title: item.task_title,
         task_id: item.id,
+        task_status: item.status,
+        task_deadline: item.task_deadline,
       }));
+
+    const completedTasks = tasks.filter(
+      (task) => task.task_status === 'completed'
+    );
+    const inProgressTasks = tasks.filter(
+      (task) => task.task_status === 'in_progress'
+    );
+    const notStartedTasks = tasks.filter(
+      (task) => task.task_status === 'not_started'
+    );
+
     const teamData = {
       team_id: teamID,
       name,
       tasks,
+      completedTasks,
+      inProgressTasks,
+      notStartedTasks,
     };
-    return res.status(200).json(teamData);
+
+    console.log(teamData);
+    return res.render('allTeamTasks', teamData);
   } catch (error) {
     return res.status(500).json(error);
   }

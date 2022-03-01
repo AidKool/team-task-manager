@@ -6,4 +6,20 @@ module.exports = {
     }
     return 'N/A';
   },
+  sanitiseStatus: (status) => {
+    switch (status) {
+      case 'completed':
+        return '🟢 Completed';
+      case 'in_progress':
+        return '🟡 In Progress';
+      case 'not_started':
+        return '🔴 Not Started';
+    }
+  },
+  formatDate: (date) =>
+    Intl.DateTimeFormat('default', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+    }).format(new Date(date)),
 };

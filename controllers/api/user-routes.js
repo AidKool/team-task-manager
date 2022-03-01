@@ -18,63 +18,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
-  try {
-    const userData = await User.findByPk(req.params.id);
-    if (!userData) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-    return res.status(200).json(userData);
-  } catch (error) {
-    return res.status(500).json(error);
-  }
-});
-
-router.get('/:id/tasks', async (req, res) => {
-  try {
-    const userTasks = await User.findByPk(req.params.id, {
-      attributes: ['id', 'username'],
-      include: [
-        {
-          model: Task,
-          attributes: {
-            exclude: ['user_id'],
-          },
-        },
-      ],
-    });
-    if (!userTasks) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-    return res.status(200).json(userTasks);
-  } catch (error) {
-    return res.status(500).json(error);
-  }
-});
-
-router.get('/:id/tasks/search?', async (req, res) => {
-  try {
-    const userTasks = await User.findByPk(req.params.id, {
-      attributes: ['id', 'username'],
-      include: [
-        {
-          model: Task,
-          where: { status: req.query.status },
-          attributes: {
-            exclude: ['user_id'],
-          },
-        },
-      ],
-    });
-    if (!userTasks) {
-      return res.status(404).json({ message: 'Data not found' });
-    }
-    return res.status(200).json(userTasks);
-  } catch (error) {
-    return res.status(500).json(error);
-  }
-});
-
 router.get('/:id/team', async (req, res) => {
   try {
     const rawData = await sequelize.query(
