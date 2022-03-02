@@ -6,6 +6,9 @@
 // bulma
 @import '../../node_modules/bulma/bulma.sass';
 
+// reset
+@import './reset';
+
 // navbar
 @import './navbar';
 
@@ -17,3 +20,6 @@
 
 // image
 @import './main';
+
+// signup and login
+@import './signup-login';
