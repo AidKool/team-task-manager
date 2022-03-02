@@ -3,19 +3,13 @@ const { QueryTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 const { Project, Team, User, Task } = require('../models');
+const renderManagerDashboard = require('../utils/managerDashboard');
 
 router.get('/', async (req, res) => {
   if (req.session.loggedIn) {
     if (req.session.user.role === 'manager') {
       try {
-        const projectsData = await Project.findAll({});
-        const projects = projectsData.map((project) =>
-          project.get({ plain: true })
-        );
-
-        const teamsData = await Team.findAll({});
-        const teams = teamsData.map((team) => team.get({ plain: true }));
-        console.log(teams);
+        const { projects, teams } = await renderManagerDashboard();
         return res.render('managerPg', { projects, teams });
       } catch (error) {
         return res.status(500).json(error);
