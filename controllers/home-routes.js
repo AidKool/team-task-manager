@@ -2,26 +2,28 @@ const router = require('express').Router();
 const { QueryTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-const { Project, Team, User, Task } = require('../models');
+const { Team, User, Task } = require('../models');
+const renderManagerDashboard = require('../utils/managerDashboard');
+const renderEmployeeDashboard = require('../utils/employeeDashboard');
+const findEmployeeID = require('../utils/findEmployeeID');
 
 router.get('/', async (req, res) => {
   if (req.session.loggedIn) {
     if (req.session.user.role === 'manager') {
-      try {
-        const projectsData = await Project.findAll({});
-        const projects = projectsData.map((project) =>
-          project.get({ plain: true })
-        );
-
-        const teamsData = await Team.findAll({});
-        const teams = teamsData.map((team) => team.get({ plain: true }));
-        console.log(teams);
-        return res.render('managerPg', { projects, teams });
-      } catch (error) {
-        return res.status(500).json(error);
-      }
+      const { projects, teams } = await renderManagerDashboard();
+      return res.render('managerPg', { projects, teams });
     }
-    return res.render('teamMemberPg');
+    const userID = await findEmployeeID(req.session.user);
+    req.params.id = userID.id;
+
+    const { userData, completedTasks, inProgressTasks, notStartedTasks } =
+      await renderEmployeeDashboard(req, res);
+    return res.render('teamMemberPg', {
+      userData,
+      completedTasks,
+      inProgressTasks,
+      notStartedTasks,
+    });
   }
   return res.redirect('/login');
 });
@@ -54,32 +56,8 @@ router.get('/users/:id', async (req, res) => {
 
 router.get('/users/:id/tasks', async (req, res) => {
   try {
-    const userRawData = await User.findByPk(req.params.id, {
-      attributes: ['id', 'username', 'first_name', 'last_name', 'team_id'],
-      include: [
-        {
-          model: Task,
-          attributes: {
-            exclude: ['user_id'],
-          },
-        },
-      ],
-    });
-    if (!userRawData) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-    const userData = userRawData.get({ plain: true });
-    const { tasks } = userData;
-
-    const completedTasks = tasks.filter((task) => task.status === 'completed');
-    const inProgressTasks = tasks.filter(
-      (task) => task.status === 'in_progress'
-    );
-    const notStartedTasks = tasks.filter(
-      (task) => task.status === 'not_started'
-    );
-
-    // console.log(userData);
+    const { userData, completedTasks, inProgressTasks, notStartedTasks } =
+      await renderEmployeeDashboard(req, res);
     return res.render('teamMemberPg', {
       userData,
       completedTasks,
