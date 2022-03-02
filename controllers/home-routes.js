@@ -5,16 +5,20 @@ const sequelize = require('../config/connection');
 const { Team, User, Task } = require('../models');
 const renderManagerDashboard = require('../utils/managerDashboard');
 const renderEmployeeDashboard = require('../utils/employeeDashboard');
-const findEmployeeID = require('../utils/findEmployeeID');
 
 router.get('/', async (req, res) => {
   if (req.session.loggedIn) {
+    console.log(req.session.user);
     if (req.session.user.role === 'manager') {
       const { projects, teams } = await renderManagerDashboard();
-      return res.render('managerPg', { projects, teams });
+      console.log(teams);
+      return res.render('managerPg', {
+        user: req.session.user,
+        projects,
+        teams,
+      });
     }
-    const userID = await findEmployeeID(req.session.user);
-    req.params.id = userID.id;
+    req.params.id = req.session.user.id;
 
     const { userData, completedTasks, inProgressTasks, notStartedTasks } =
       await renderEmployeeDashboard(req, res);
