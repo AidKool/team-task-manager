@@ -177,6 +177,31 @@ router.get('/teams/:id', async (req, res) => {
   }
 });
 
+router.get('/teams', async (req, res) => {
+  try {
+    const rawData = await sequelize.query(
+      'SELECT user.first_name, user.last_name, user.id FROM user WHERE team_id is null AND role = "employee"',
+      { type: QueryTypes.SELECT }
+    );
+    // if (rawData.length === 0) {
+    //   return res.status(404).json({ message: 'No unassigned employees found' });
+    // }
+    console.log(rawData)
+    // const { name } = rawData[0];
+     const users = rawData
+      //  .filter((user) => user.id)
+      //  .map((user) => ({
+      //    user_first_name: user.first_name,
+      //    user_last_name: user.last_name,
+      //    user_id: user.id,
+      //  }));
+    res.render('createTeam', users);
+
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
 router.get('/teams/:id/tasks', async (req, res) => {
   const teamID = Number(req.params.id);
   try {
