@@ -1,7 +1,13 @@
 @charset "utf-8";
 
+// variables
+@import './variables';
+
 // bulma
 @import '../../node_modules/bulma/bulma.sass';
+
+// navbar
+@import './navbar';
 
 // piechart
 @import './piechart';
@@ -10,4 +16,4 @@
 @import './tables';
 
 // image
-@import'./main';
+@import './main';
