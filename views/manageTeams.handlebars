@@ -1,16 +1,16 @@
 {{>headerNav}}
 <section class='hero m-auto is-large'>
-  <div class='container is-fluid columns is-centered '>
-    <div class='card is-flex is-justify-content-space-evenly p-5 has-background-info-dark'>
-      <div class="columns is-desktop">
-        <div class="column is-8">
+  <div class='container'>
+    <div class='p-3 has-background-info-dark'>
+      <div class="columns">
+        <div class="column">
           <div class='card m-1'>
             <div class="card-content">
-              <h1 class='box title is-3 has-text-white has-text-centered has-background-info-dark '>Manage Teams</h1>
+              <h1 class='box title has-text-white has-text-centered has-background-info-dark '>Manage Teams</h1>
 
               <div class='columns'>
                 <form class="create-team">
-                  <div class='column is-12'>
+                  <div class='column'>
                     <div class="mb-5">
                       <span class='has-background-warning py-3 px-3'>Create a new Team</span>
                     </div>
@@ -29,16 +29,16 @@
                 </form>
               </div>
               <div class='columns'>
-                <form class="assign-employee-team">
-                  <div class='column is-12'>
+                <div class='column'>
+                  <form class="assign-employee-team">
                     <div class="mb-4">
                       <span class='has-background-warning py-3 px-3'>Assign Employees to a Team</span>
                     </div>
                     <div class="field">
-                      <label for="">Select a Team</label>
+                      <label for="select-team">Select a Team</label>
                       <div class="control mb-0">
                         <div class="select">
-                          <select class="select-team">
+                          <select class="select-team" id="select-team">
                             <option disabled selected value="/">Select a Team</option>
                             {{#each teams as |team|}}
                             <option data-id={{team.id}} value='/teams/{{team.id}}'>{{team.name}}</option>
@@ -48,10 +48,10 @@
                       </div>
                     </div>
                     <div class="field">
-                      <label for="">Select an Employee</label>
+                      <label for="select-employee">Select an Employee</label>
                       <div class="control mb-0">
                         <div class="select">
-                          <select class="select-employee">
+                          <select class="select-employee" id="select-employee">
                             <option disabled selected value="/">Select an Employee</option>
                             {{#each users as |user|}}
                             <option data-id="{{user.id}}" value='/users/{{user.id}}'>{{user.first_name}}
@@ -66,28 +66,7 @@
                     <div class='field'>
                       <button type="submit" class='button is-primary'>Add Employee</button>
                     </div>
-                  </div>
-                </form>
-              </div>
-              {{!-- <div class="control mt-0">
-                <input class="input" type="text" value="employee role here" Employee Role>
-              </div> --}}
-            </div>
-          </div>
-        </div>
-
-        <div class="columns is-desktop mt-0">
-          <div class="column ">
-            <div class='card m-1'>
-              <div class="card-content">
-                <h1 class='box title is-3 has-text-white has-text-centered has-background-info-dark'>Team Members</h1>
-                <div class="container ">
-                  <div class="box has-background-warning">
-
-                    <div class="box ">
-                      {{!-- added users --}}
-                    </div>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -95,5 +74,6 @@
         </div>
       </div>
     </div>
+  </div>
 </section>
 <script src="/js/createTeam.js"></script>
