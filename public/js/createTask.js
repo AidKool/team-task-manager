@@ -1,3 +1,6 @@
+const createTaskBtn = document.querySelector('.create-task');
+const createTaskForm = document.querySelector('.create-task-form');
+
 const createTaskHandler = async (event) => {
   event.preventDefault();
   const taskTitle = document.querySelector('#task-title').value.trim();
@@ -5,16 +8,17 @@ const createTaskHandler = async (event) => {
   const taskDescription = document
     .querySelector('#task-description')
     .value.trim();
-  const projectSelected = document.querySelector('#project-list').value.trim();
+  const userList = document.querySelector('.user-list');
+  const userID = userList.options[userList.selectedIndex].dataset.id;
 
-  if (taskTitle && taskDeadline && taskDescription && projectSelected) {
+  if (taskTitle && taskDeadline && taskDescription && userID) {
     const response = await fetch('/api/tasks', {
       method: 'POST',
       body: JSON.stringify({
-        taskTitle,
-        taskDeadline,
-        taskDescription,
-        projectSelected,
+        task_title: taskTitle,
+        task_deadline: taskDeadline,
+        task_description: taskDescription,
+        user_id: userID,
       }),
       headers: { 'Content-Type': 'application/json' },
     });
@@ -27,6 +31,15 @@ const createTaskHandler = async (event) => {
   }
 };
 
-document
-  .getElementById('#save-task')
-  .addEventListener('click', createTaskHandler);
+function closeModalTask() {
+  var element = document.getElementById('modalCreateTask');
+  element.classList.remove('is-active');
+}
+
+function openModalTask() {
+  var element = document.getElementById('modalCreateTask');
+  element.classList.add('is-active');
+}
+
+createTaskBtn.addEventListener('click', openModalTask);
+createTaskForm.addEventListener('submit', createTaskHandler);

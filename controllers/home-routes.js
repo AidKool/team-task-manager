@@ -152,6 +152,8 @@ router.get('/teams/:id', async (req, res) => {
 
     const teamData = { id, name, usersData };
 
+    console.log(usersData);
+
     return res.render('viewTeam', { teamData, teamTasksData });
     // return res.status(200).json(teamData);
   } catch (error) {
