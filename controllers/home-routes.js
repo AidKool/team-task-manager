@@ -165,7 +165,9 @@ router.get('/teams', async (req, res) => {
       'SELECT user.first_name, user.last_name, user.id FROM user WHERE team_id is null AND role = "employee"',
       { type: QueryTypes.SELECT }
     );
-    res.render('manageTeams', { users });
+    const teamsData = await Team.findAll();
+    const teams = teamsData.map((team) => team.get({ plain: true }));
+    res.render('manageTeams', { users, teams });
   } catch (error) {
     return res.status(500).json(error);
   }

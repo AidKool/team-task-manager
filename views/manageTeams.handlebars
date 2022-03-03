@@ -6,7 +6,7 @@
         <div class="column is-8">
           <div class='card m-1'>
             <div class="card-content">
-              <h1 class='box title is-3 has-text-white has-text-centered has-background-info-dark '>Manage Team</h1>
+              <h1 class='box title is-3 has-text-white has-text-centered has-background-info-dark '>Manage Teams</h1>
 
               <div class='columns'>
                 <form class="create-team">
@@ -27,29 +27,45 @@
                 </form>
               </div>
               <div class='columns'>
-                <div class='column is-12'>
-                  <div class="mb-2">
-                    <span class='button is-static has-background-warning'>Employee</span>
-                  </div>
-                  <div class="field">
-                    <div class="control mb-0">
-                      <div class="select">
-                        <select>
-                          {{#each users as |user|}}
-                          <option value='/users/{{user.id}}'>{{user.first_name}} {{user.last_name}}</option>
-                          {{/each}}
-                        </select>
+                <form class="assign-employee-team">
+                  <div class='column is-12'>
+                    <div class="mb-4">
+                      <span class='has-background-warning py-3 px-3'>Assign Employees to a Team</span>
+                    </div>
+                    <div class="field">
+                      <label for="">Select a Team</label>
+                      <div class="control mb-0">
+                        <div class="select">
+                          <select class="select-team">
+                            {{#each teams as |team|}}
+                            <option data-id={{team.id}} value='/teams/{{team.id}}'>{{team.name}}</option>
+                            {{/each}}
+                          </select>
+                        </div>
                       </div>
                     </div>
+                    <div class="field">
+                      <label for="">Select an Employee</label>
+                      <div class="control mb-0">
+                        <div class="select">
+                          <select class="select-employee">
+                            {{#each users as |user|}}
+                            <option data-id="{{user.id}}" value='/users/{{user.id}}'>{{user.first_name}}
+                              {{user.last_name}}</option>
+                            {{/each}}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class='field'>
+                      <button class='button is-primary'>Add Employee</button>
+                    </div>
                   </div>
-                </div>
+                </form>
               </div>
               {{!-- <div class="control mt-0">
                 <input class="input" type="text" value="employee role here" Employee Role>
               </div> --}}
-              <div class='field m-2'>
-                <button class='button is-primary'>Save Employee</button>
-              </div>
             </div>
           </div>
         </div>
