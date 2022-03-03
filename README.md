@@ -30,17 +30,17 @@ This project required to build a full Node.js web application using the MVC (
 Model-View-Controller ) design pattern in its architectural structure, It will
 use Handlebars.js as the templating language, Sequelize as the ORM, the
 express-session npm package for authentication and the live application deployed
-on Horuku.
+on Heroku.
 
 This Project is about developing a Team Task Manager application that will allow
 a user to sign up into the app. Based on the user role , he will be redirected
-to a particular page which are Manager page or employee page. From the Employee
+to a particular page which is Manager page or employee page. From the Employee
 page the user will be able to view his team members , all task allocated to each
-team member, statistics about the complemention of each task and create
-additional task. The user with the manage role when login will be redirected to
-the manager page. From its page , the manager will be able to view all projects
-, all existing Team, create project, create a Team and allocated each employee
-to a selected team.
+team member, statistics about the completion of each task and create additional
+tasks. The user with the manage role when login will be redirected to the
+manager page. From its page , the manager will be able to view all projects ,
+all existing Team, create project, create a Team and allocated each employee to
+a selected team.
 
 ## User story
 
@@ -87,11 +87,16 @@ Project is opened for contributions.
 
 ## Questions:
 
-- **Contact details:**
+- **Developer-1 Contact details:**
+
+  - Github: [@AidKool](https://github.com/AidKool)
+
+  - Github: [@DaveyDavey1901](https://github.com/DaveyDavey1901)
+
+  - Github: [@mattmc86](https://github.com/mattmc86)
+
   - Github: [@pfansi](https://github.com/pfansi)
-  - Email: pfansi76@gmail.com
 
 ## Screenshots
 
-- Screenshot of the database created
-  ![screenshot](./assets/images/database_created.JPG.JPG)
+- Screenshot of the database created ![screenshot]()
