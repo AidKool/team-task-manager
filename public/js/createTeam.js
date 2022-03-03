@@ -18,8 +18,8 @@ async function createTeamFormHandler(event) {
       const createTeamSuccess = document.querySelector('.create-team-success');
       createTeamSuccess.classList.remove('is-hidden');
       setTimeout(() => {
-        createTeamSuccess.classList.add('is-hidden');
-      }, 2000);
+        window.location.reload();
+      }, 1000);
     } else {
       alert(response.statusText);
     }
@@ -42,11 +42,9 @@ async function assignEmployeeTeamFormHandler(event) {
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
-      teamElement.selectedIndex = 0;
-      employeeElement.selectedIndex = 0;
       addEmployeeSuccess.classList.remove('is-hidden');
       setTimeout(() => {
-        addEmployeeSuccess.classList.add('is-hidden');
+        window.location.reload();
       }, 1000);
     } else {
       alert(response.statusText);
