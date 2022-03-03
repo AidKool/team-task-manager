@@ -9,12 +9,3 @@ function openModalProj() {
   element.classList.add('is-active');
 }
 
-function closeModalTask() {
-  var element = document.getElementById("modalCreateTask");
-  element.classList.remove('is-active');
-}
-
-function openModalTask() {
-  var element = document.getElementById("modalCreateTask");
-  element.classList.add('is-active');
-}

@@ -13,7 +13,7 @@
                   <div class="container card max-width   has-background-info-dark column mt-2">
                     <div class="level is-flex columns ">
                       <figure class="image is-48x48 mx-2 mt-2 is-white">
-                      <img class="is-rounded" src='/img/avatar.jpg' />
+                        <img class="is-rounded" src='/img/avatar.jpg' />
                       </figure>
                       <div class="tag is-white is-medium column is-6"><a
                           href='/users/{{user.id}}/tasks'>{{user.first_name}} {{user.last_name}}</a></div>
@@ -81,6 +81,9 @@
                 <div class='field m-3'>
                   <a href="/teams/{{teamData.id}}/tasks" class='button is-link'>View Team Tasks</a>
                 </div>
+                <div class="field m-3">
+                  <button class='button is-link create-task'>Create a Task</button>
+                </div>
               </div>
             </div>
           </div>
@@ -89,5 +92,6 @@
     </div>
   </div>
 </section>
+{{>modalCreateTask}}
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 <script src="/js/managerPg.js"></script>
