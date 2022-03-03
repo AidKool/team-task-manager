@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
 const createProjectBtn = document.getElementById('create-project');
-const createTeamBtn = document.getElementById('create-team');
 const ctx = document.querySelector('.piechart').getContext('2d');
 const completeTasks = Number(document.querySelector('.completed').textContent);
 const inProgressTasks = Number(
@@ -32,36 +31,3 @@ const piechart = new Chart(ctx, {
     responsive: true,
   },
 });
-
-//need fetch path and replace location for each create
-const createProject = async (event) => {
-  event.preventDefault();
-  const response = await fetch('/api/user', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  if (response.ok) {
-    document.location.replace('/'); //Need this
-  } else {
-    alert(response.statusText);
-  }
-};
-const createTeam = async (event) => {
-  event.preventDefault();
-  const response = await fetch('/api/user', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  if (response.ok) {
-    document.location.replace('/'); //Need this
-  } else {
-    alert(response.statusText);
-  }
-};
-
-createProjectBtn.addEventListener('click', createProject);
-createTeamBtn.addEventListener('click', createTeam);

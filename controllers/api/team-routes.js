@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    await Team.create(req.body);
+    await Team.create({ name: req.body.teamName });
     return res.status(201).json({ message: 'Team successfully created' });
   } catch (error) {
     return res.status(500).json(error);

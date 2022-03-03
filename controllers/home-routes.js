@@ -159,6 +159,20 @@ router.get('/teams/:id', async (req, res) => {
   }
 });
 
+router.get('/teams', async (req, res) => {
+  try {
+    const users = await sequelize.query(
+      'SELECT user.first_name, user.last_name, user.id FROM user WHERE team_id is null AND role = "employee"',
+      { type: QueryTypes.SELECT }
+    );
+    const teamsData = await Team.findAll();
+    const teams = teamsData.map((team) => team.get({ plain: true }));
+    res.render('manageTeams', { users, teams });
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
 router.get('/teams/:id/tasks', async (req, res) => {
   const teamID = Number(req.params.id);
   try {
