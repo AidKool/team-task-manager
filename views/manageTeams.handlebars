@@ -6,32 +6,37 @@
         <div class="column is-8">
           <div class='card m-1'>
             <div class="card-content">
-              <h1 class='box title is-3 has-text-white has-text-centered has-background-info-dark '>Project Team</h1>
-              
-              <div class='columns'>
-                <div class='column is-12'>
-                  <div class="mb-2">
-                    <span class='button is-static has-background-warning '>Team Name</span>
-                  </div>
+              <h1 class='box title is-3 has-text-white has-text-centered has-background-info-dark '>Manage Team</h1>
 
-                  <div class='field'>
-                    <div class='control'>
-                      <input class='input' type='text' placeholder='Team Name' />
+              <div class='columns'>
+                <form class="create-team">
+                  <div class='column is-12'>
+                    <div class="mb-5">
+                      <span class='has-background-warning py-3 px-3'>Create a new Team</span>
+                    </div>
+
+                    <div class='field'>
+                      <div class='control'>
+                        <input class='input team-name' type='text' placeholder='Team Name' required />
+                      </div>
+                    </div>
+                    <div class='field'>
+                      <button type="submit" class='button is-primary'>Create Team</button>
                     </div>
                   </div>
-                </div>
+                </form>
               </div>
               <div class='columns'>
                 <div class='column is-12'>
                   <div class="mb-2">
-                    <span class='button is-static has-background-warning '>Employee</span>
+                    <span class='button is-static has-background-warning'>Employee</span>
                   </div>
                   <div class="field">
                     <div class="control mb-0">
                       <div class="select">
-                        <select>                     
-                          {{#each users as |user|}}                       
-                           <option value='/users/{{user.id}}'>{{user.first_name}} {{user.last_name}}</option>
+                        <select>
+                          {{#each users as |user|}}
+                          <option value='/users/{{user.id}}'>{{user.first_name}} {{user.last_name}}</option>
                           {{/each}}
                         </select>
                       </div>
@@ -58,12 +63,9 @@
                   <div class="box has-background-warning">
 
                     <div class="box ">
-                        {{!-- added users --}}
+                      {{!-- added users --}}
                     </div>
                   </div>
-                </div>
-                <div class='field m-3 '>
-                  <button class='button is-primary'>Create Team</button>
                 </div>
               </div>
             </div>
@@ -72,4 +74,4 @@
       </div>
     </div>
 </section>
-<script src="/js/managerPg.js"></script>
+<script src="/js/createTeam.js"></script>
