@@ -37,6 +37,7 @@
                       <div class="control mb-0">
                         <div class="select">
                           <select class="select-team">
+                            <option disabled selected value="/">Select a Team</option>
                             {{#each teams as |team|}}
                             <option data-id={{team.id}} value='/teams/{{team.id}}'>{{team.name}}</option>
                             {{/each}}
@@ -49,6 +50,7 @@
                       <div class="control mb-0">
                         <div class="select">
                           <select class="select-employee">
+                            <option disabled selected value="/">Select an Employee</option>
                             {{#each users as |user|}}
                             <option data-id="{{user.id}}" value='/users/{{user.id}}'>{{user.first_name}}
                               {{user.last_name}}</option>
@@ -58,7 +60,7 @@
                       </div>
                     </div>
                     <div class='field'>
-                      <button class='button is-primary'>Add Employee</button>
+                      <button type="submit" class='button is-primary'>Add Employee</button>
                     </div>
                   </div>
                 </form>
