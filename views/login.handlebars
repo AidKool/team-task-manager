@@ -1,38 +1,39 @@
 <section class='level m-5'>
-  <div class='container is-fluid'>
+  <div class='container'>
     <div class='columns is-centered'>
-      <div>
-        <div class='box column has-background-link'>
-          <form class='box' id='login-form'>
-            <div class='has-text-centered'>
-              <figure class='image is-48x48 is-inline-block'>
-                <img src='https://bulma.io/images/placeholders/128x128.png' />
-              </figure>
-            </div>
-            <h1 class='title is-1 has-text-black has-text-centered'>Team Task
-              Manager</h1>
+      <div class='card column has-background-info-dark form-container'>
+        <section class="box mb-0">
+          <div class='has-text-centered'>
+            <figure class='image is-64x64 is-inline-block'>
+              <img src='/img/ttmLogo.jpg' />
+            </figure>
+          </div>
+          <h1 class='title is-1 has-text-centered has-text-grey-dark'>Team <br>Task
+            Manager</h1>
+          <form id='login-form' class="mb-0">
 
-            <div class='field'>
+            <div class='field has-text-grey-dark'>
               <label for='username' class='label'>Username</label>
               <div class='control'>
                 <input class='input' type='text' placeholder='username' id='username' />
               </div>
             </div>
 
-            <div class='field'>
+            <div class='field has-text-grey-dark'>
               <label for='password' class='label'>Password</label>
               <div class='control'>
                 <input class='input' id='password' type='password' placeholder='********' />
               </div>
             </div>
-            <div class='field is-flex is-justify-content-space-evenly'>
+            <div class='field is-flex is-justify-content-space-evenly has-text-grey-dark'>
               <button class='button is-primary'>Login</button>
             </div>
-            <p class='has-text-centered'>
-              or sign up <a href="/signup">here</a>
-            </p>
           </form>
-        </div>
+          <p class='has-text-centered mt-2'>
+            or sign up
+            <a href='/signup'>here</a>
+          </p>
+        </section>
       </div>
     </div>
   </div>
