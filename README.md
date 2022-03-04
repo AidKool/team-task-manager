@@ -7,13 +7,13 @@
 - [Git-Repository](#git-repository)
 - [Demo-Video](#walktrough-video)
 - [Description](#description)
-- [User-story](#user-story)
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
 - [Contributing](#contributing)
 - [Questions](#questions)
 - [Screenshots](#screenshots)
+- [Live Site](#live)
 
 ## Git Repository
 
@@ -41,43 +41,6 @@ tasks. The user with the manage role when login will be redirected to the
 manager page. From its page , the manager will be able to view all projects ,
 all existing Team, create project, create a Team and allocated each employee to
 a selected team.
-
-## User story
-
-```md
-AS A developer who writes about tech I WANT a web application SO THAT Users can
-manage projects,Teams and tasks.
-```
-
-```md
-AS A USER WHEN I am presented with the option to login or to sign up. WHEN I
-choose to sign up THEN I am prompted with a form to register as an employee.
-WHEN I click to the home page button THEN I am taken to the homepage with the
-option to login. WHEN I enter a username and password THEN I am directed to an
-employee page or manager page.
-```
-
-```md
-AS A USER WHEN I login as an employee , i am presented with the option to view
-all team members or all team tasks. WHEN i clicked on the button view team THEN
-I am presented with a list of team members, team tasks statistics and an option
-to create tasks. WHEN i looked at the statistics THEN i am presented with a
-chart and table that tell me statut of completion of all tasks. WHEN i click on
-the create task button THEN i am prompted to enter the task name , deadline, an
-option to choose the team member to assign the task to, and a task description.
-```
-
-```md
-AS A USER WHEN I login as a manager , I am presented with the option to view the
-list of projects, a list of all teams, an option to create a project and to
-manage teams. WHEN i select a project from the list THEN i am directed to a page
-giving statistics about the project completion. WHEN i select a team THEN i am
-presented with a page with the list of team members and statistics about tasks
-allocated. WHEN I click on create project THEN I am prompted to enter the
-project name, deadline and assign it to an existing team. WHEN I click on manage
-team THEN I am prompted with the option to create a team or to assign an
-employee to a team.
-```
 
 ## Installation:
 
@@ -110,7 +73,7 @@ Run these commands to start the app:
 
 ## Contributing:
 
-Project is opened for contributions.
+Project is open for contributions.
 
 ## Questions:
 
@@ -128,24 +91,28 @@ Project is opened for contributions.
 
 - Screenshot of the Homepage or login page
 
-  ![screenshot](./public/img/homepage.JPG)
+  ![homepage](https://user-images.githubusercontent.com/73796715/156848290-303ce6c1-a471-49f3-a9e3-40c54c554113.JPG)
 
 - Screenshot of the create task form
 
-  ![screenshot](./public/img/create_task_form.JPG)
+  ![create_task_form](https://user-images.githubusercontent.com/73796715/156848231-cd04c31d-cb23-4519-ac4b-9157c687edb4.JPG)
 
 - Screenshot of the create project form
 
-  ![screenshot](./public/img/create_project_form.JPG)
+  ![create_project_form](https://user-images.githubusercontent.com/73796715/156848172-85109756-7f66-44eb-a90c-56b206e2a9af.JPG)
 
 - Screenshot of the manage team form
 
-  ![screenshot](./public/img/manage_team_form.JPG)
+  ![manage_team_form](https://user-images.githubusercontent.com/73796715/156848388-1adee19d-1f22-4093-8321-ba53867aba6f.JPG)
 
 - Screenshot of the Manager page
 
-  ![screenshot](./public/img/managerpage.JPG)
+  ![managerpage](https://user-images.githubusercontent.com/73796715/156848342-f223632f-c758-4c64-a550-5678a25b3619.JPG)
 
 - Screenshot of the Team page
 
-  ![screenshot](./public/img/teampage.JPG)
+  ![teampage](https://user-images.githubusercontent.com/73796715/156848648-a6c7bb85-4ef0-4957-b955-0ed85aeee066.JPG)
+
+## Live
+
+The application can be used live [here](https://teamtask-manager.herokuapp.com/)
