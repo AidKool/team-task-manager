@@ -2,7 +2,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue)
 
-## Table of Contents:
+## Table of Contents
 
 - [Git-Repository](#git-repository)
 - [Demo-Video](#walktrough-video)
@@ -25,7 +25,7 @@ The git repository folder that is hosting the project can be found
 Application video
 [demo](https://drive.google.com/file/d/1MA4HYNENXGCWh7qOiZ2gEddEhNQrgxMA/view)
 
-## Description:
+## Description
 
 This project required to build a full Node.js web application using the MVC (
 Model-View-Controller ) design pattern in its architectural structure, It will
@@ -43,40 +43,31 @@ manager page. From its page , the manager will be able to view all projects ,
 all existing Team, create project, create a Team and allocated each employee to
 a selected team.
 
-## Installation:
+## Installation
 
 ---
 
 Run this command to install dependencies:
 
-  <pre><code>
-  npm install
-  </code></pre>
+    npm install
 
-## Usage:
+## Usage
 
 ---
 
 Run these commands to start the app:
 
-  <pre><code>
-  npm run watch
-  </code></pre>
-  <pre><code>
-  npm run start
-  </code></pre>
+    npm run start
 
-## License:
+## License
 
 [License: MIT](https://opensource.org/licenses/MIT)
 
-# This Project is licensed under the MIT license
-
-## Contributing:
+## Contributing
 
 Project is open for contributions.
 
-## Questions:
+## Questions
 
 - **Developers Contact details:**
 
