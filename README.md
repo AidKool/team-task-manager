@@ -20,7 +20,7 @@
 The git repository folder that is hosting the project can be found
 [here](https://github.com/AidKool/team-task-manager)
 
-## Link to the walktrough video
+## Walktrough video
 
 Application video
 [demo](https://drive.google.com/file/d/1MA4HYNENXGCWh7qOiZ2gEddEhNQrgxMA/view)
