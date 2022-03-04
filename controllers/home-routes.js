@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 
     const { userData, completedTasks, inProgressTasks, notStartedTasks } =
       await renderEmployeeDashboard(req, res);
-    return res.render('teamMemberPg', {
+    return res.render('team-member-dashboard', {
       userData,
       completedTasks,
       inProgressTasks,
@@ -62,7 +62,7 @@ router.get('/users/:id/tasks', async (req, res) => {
   try {
     const { userData, completedTasks, inProgressTasks, notStartedTasks } =
       await renderEmployeeDashboard(req, res);
-    return res.render('teamMemberPg', {
+    return res.render('team-member-dashboard', {
       userData,
       completedTasks,
       inProgressTasks,
