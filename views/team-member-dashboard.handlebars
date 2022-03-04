@@ -72,7 +72,7 @@
                   </thead>
                   <tbody>
                     {{#each userData.tasks as |task|}}
-                    <tr>
+                    <tr class="task-row is-clickable" data-id="{{task.id}}">
                       <th>{{task.id}}</th>
                       <td>
                         <p>{{task.task_title}}</p>
@@ -98,7 +98,7 @@
                   </thead>
                   <tbody>
                     {{#each completedTasks as |task|}}
-                    <tr>
+                    <tr class="task-row is-clickable" data-id="{{task.id}}">
                       <th>{{task.id}}</th>
                       <td>
                         <p>{{task.task_title}}</p>
@@ -124,7 +124,7 @@
                   </thead>
                   <tbody>
                     {{#each inProgressTasks as |task|}}
-                    <tr>
+                    <tr class="task-row is-clickable" data-id="{{task.id}}">
                       <th>{{task.id}}</th>
                       <td>
                         <p>{{task.task_title}}</p>
@@ -150,7 +150,7 @@
                   </thead>
                   <tbody>
                     {{#each notStartedTasks as |task|}}
-                    <tr>
+                    <tr class="task-row is-clickable" data-id="{{task.id}}">
                       <th>{{task.id}}</th>
                       <td>
                         <p>{{task.task_title}}</p>
@@ -173,4 +173,5 @@
     </div>
   </div>
 </section>
+{{>modal-task-details}}
 <script src="/js/tasksTable.js"></script>

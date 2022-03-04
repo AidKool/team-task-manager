@@ -22,7 +22,7 @@ Task.init(
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
-        len: [100, 200],
+        len: [10, 200],
       },
     },
     task_deadline: {
