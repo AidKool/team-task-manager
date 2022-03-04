@@ -1,5 +1,5 @@
 const tableBtns = document.querySelectorAll('.table-btn');
-const employeeTaskTables = document.querySelectorAll('.employee-tasks-table');
+const employeeTaskTables = document.querySelectorAll('.tasks-table');
 
 tableBtns.forEach((tableBtn) =>
   tableBtn.addEventListener('click', (event) => {

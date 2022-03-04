@@ -8,21 +8,20 @@ const renderEmployeeDashboard = require('../utils/employeeDashboard');
 
 router.get('/', async (req, res) => {
   if (req.session.loggedIn) {
-    console.log(req.session.user);
     if (req.session.user.role === 'manager') {
-      const { projects, teams } = await renderManagerDashboard();
-      console.log(teams);
-      return res.render('managerPg', {
+      const { projects, teams, freeTeams } = await renderManagerDashboard();
+      return res.render('manager-dashboard', {
         user: req.session.user,
         projects,
         teams,
+        freeTeams,
       });
     }
     req.params.id = req.session.user.id;
 
     const { userData, completedTasks, inProgressTasks, notStartedTasks } =
       await renderEmployeeDashboard(req, res);
-    return res.render('teamMemberPg', {
+    return res.render('team-member-dashboard', {
       userData,
       completedTasks,
       inProgressTasks,
@@ -47,6 +46,9 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/users/:id', async (req, res) => {
+  if (!req.session.loggedIn) {
+    return res.redirect('/login');
+  }
   try {
     const userData = await User.findByPk(req.params.id);
     if (!userData) {
@@ -59,10 +61,13 @@ router.get('/users/:id', async (req, res) => {
 });
 
 router.get('/users/:id/tasks', async (req, res) => {
+  if (!req.session.loggedIn) {
+    return res.redirect('/login');
+  }
   try {
     const { userData, completedTasks, inProgressTasks, notStartedTasks } =
       await renderEmployeeDashboard(req, res);
-    return res.render('teamMemberPg', {
+    return res.render('team-member-dashboard', {
       userData,
       completedTasks,
       inProgressTasks,
@@ -74,30 +79,16 @@ router.get('/users/:id/tasks', async (req, res) => {
   }
 });
 
-router.get('/users/:id/tasks/search?', async (req, res) => {
-  try {
-    const userTasks = await User.findByPk(req.params.id, {
-      attributes: ['id', 'username'],
-      include: [
-        {
-          model: Task,
-          where: { status: req.query.status },
-          attributes: {
-            exclude: ['user_id'],
-          },
-        },
-      ],
-    });
-    if (!userTasks) {
-      return res.status(404).json({ message: 'Data not found' });
-    }
-    return res.status(200).json(userTasks);
-  } catch (error) {
-    return res.status(500).json(error);
-  }
-});
-
 router.get('/teams/:id', async (req, res) => {
+  if (!req.session.loggedIn) {
+    return res.redirect('/login');
+  }
+  if (
+    req.session.user.role !== 'manager' &&
+    req.session.user.team_id !== Number(req.params.id)
+  ) {
+    return res.redirect('/');
+  }
   try {
     const teamUsersRawData = await Team.findByPk(req.params.id, {
       include: [
@@ -152,9 +143,7 @@ router.get('/teams/:id', async (req, res) => {
 
     const teamData = { id, name, usersData };
 
-    console.log(usersData);
-
-    return res.render('viewTeam', { teamData, teamTasksData });
+    return res.render('view-team', { teamData, teamTasksData });
     // return res.status(200).json(teamData);
   } catch (error) {
     return res.status(500).json(error);
@@ -162,6 +151,12 @@ router.get('/teams/:id', async (req, res) => {
 });
 
 router.get('/teams', async (req, res) => {
+  if (!req.session.loggedIn) {
+    return res.redirect('/login');
+  }
+  if (req.session.user.role !== 'manager') {
+    return res.redirect('/');
+  }
   try {
     const users = await sequelize.query(
       'SELECT user.first_name, user.last_name, user.id FROM user WHERE team_id is null AND role = "employee"',
@@ -169,13 +164,22 @@ router.get('/teams', async (req, res) => {
     );
     const teamsData = await Team.findAll();
     const teams = teamsData.map((team) => team.get({ plain: true }));
-    res.render('manageTeams', { users, teams });
+    res.render('manage-teams', { users, teams });
   } catch (error) {
     return res.status(500).json(error);
   }
 });
 
 router.get('/teams/:id/tasks', async (req, res) => {
+  if (!req.session.loggedIn) {
+    return res.redirect('/login');
+  }
+  if (
+    req.session.user.role !== 'manager' &&
+    req.session.user.team_id !== Number(req.params.id)
+  ) {
+    return res.redirect('/');
+  }
   const teamID = Number(req.params.id);
   try {
     const rawData = await sequelize.query(
@@ -214,39 +218,7 @@ router.get('/teams/:id/tasks', async (req, res) => {
       notStartedTasks,
     };
 
-    console.log(teamData);
-    return res.render('allTeamTasks', teamData);
-  } catch (error) {
-    return res.status(500).json(error);
-  }
-});
-
-router.get('/teams/:id/tasks/search?', async (req, res) => {
-  const teamID = Number(req.params.id);
-  try {
-    const rawData = await sequelize.query(
-      'SELECT team.name, task.task_title, task.id FROM team LEFT JOIN user ON team.id = user.team_id LEFT JOIN task ON user.id = task.user_id WHERE team.id = :id AND task.status = :status',
-      {
-        type: QueryTypes.SELECT,
-        replacements: { id: req.params.id, status: req.query.status },
-      }
-    );
-    if (rawData.length === 0) {
-      return res.status(404).json({ message: 'Data not found' });
-    }
-    const { name } = rawData[0];
-    const tasks = rawData
-      .filter((item) => item.task_title)
-      .map((item) => ({
-        task_title: item.task_title,
-        task_id: item.id,
-      }));
-    const teamData = {
-      team_id: teamID,
-      name,
-      tasks,
-    };
-    return res.status(200).json(teamData);
+    return res.render('all-team-tasks', teamData);
   } catch (error) {
     return res.status(500).json(error);
   }

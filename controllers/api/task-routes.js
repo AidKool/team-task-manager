@@ -51,13 +51,4 @@ router.patch('/:id', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
-  try {
-    await Task.destroy({ where: { id: req.params.id } });
-    return res.status(200).json({ message: 'Task deleted successfully' });
-  } catch (error) {
-    return res.status(500).json(error);
-  }
-});
-
 module.exports = router;

@@ -1,4 +1,4 @@
-{{>headerNav}}
+{{>header-nav}}
 <section class='level m-auto my-5'>
   <div class='container column'>
     <div class='columns box has-background-info-dark'>
@@ -20,11 +20,12 @@
           <a href="/teams/{{userData.team_id}}/tasks" class='button has-background-info-dark has-text-white'>All
             Team Tasks
           </a>
+        </div>
       </article>
 
       <div class="column box text-is-centered">
         <h1 class='box title is-3 has-text-white has-text-centered has-background-info-dark mb-2'>Team Member <br>
-          Dashboard 
+          Dashboard
         </h1>
         <div class="box has-background-warning p-0">
           <div class="column">
@@ -60,7 +61,7 @@
             </div>
             <div class=" box">
               <div class="column is-align-items-center">
-                <table class="table employee-tasks-table is-scrollable is-hidden active" id="all-tasks">
+                <table class="table tasks-table is-scrollable is-hidden active" id="all-tasks">
                   <thead>
                     <tr>
                       <th><abbr title="Position">Task ID</abbr></th>
@@ -86,7 +87,7 @@
                     {{/each}}
                   </tbody>
                 </table>
-                <table class="table employee-tasks-table is-scrollable is-hidden" id="completed-tasks">
+                <table class="table tasks-table is-scrollable is-hidden" id="completed-tasks">
                   <thead>
                     <tr>
                       <th><abbr title="Position">Task ID</abbr></th>
@@ -112,7 +113,7 @@
                     {{/each}}
                   </tbody>
                 </table>
-                <table class="table employee-tasks-table is-scrollable is-hidden" id="in-progress-tasks">
+                <table class="table tasks-table is-scrollable is-hidden" id="in-progress-tasks">
                   <thead>
                     <tr>
                       <th><abbr title="Position">Task ID</abbr></th>
@@ -138,7 +139,7 @@
                     {{/each}}
                   </tbody>
                 </table>
-                <table class="table employee-tasks-table is-scrollable is-hidden" id="not-started-tasks">
+                <table class="table tasks-table is-scrollable is-hidden" id="not-started-tasks">
                   <thead>
                     <tr>
                       <th><abbr title="Position">Task ID</abbr></th>
@@ -171,5 +172,5 @@
       </div>
     </div>
   </div>
- </section>
-<script src="/js/employeePg.js"></script>
+</section>
+<script src="/js/tasksTable.js"></script>

@@ -1,8 +1,8 @@
-{{>headerNav}}
-<section class='level m-auto '>
+{{>header-nav}}
+<section class='level m-auto'>
   <div class='container'>
     <div class='card column p-3 has-background-info-dark'>
-      <div class='card '>
+      <div class='card'>
         <div class="card-content">
           <h1 class='box title has-text-white has-text-centered has-background-info-dark'>Manage Teams</h1>
 
@@ -11,18 +11,15 @@
               <div class='column'>
                 <div class="mb-5">
                   <span class='box has-background-warning py-3 px-3'>
-                    <span 
-                    class="iconify-inline" 
-                    data-icon="fluent:people-team-add-20-regular" 
-                    style="font-size: 32px;" 
-                    data-flip="horizontal"
-                    >
+                    <span class="iconify-inline" data-icon="fluent:people-team-add-20-regular" style="font-size: 32px;"
+                      data-flip="horizontal">
                     </span> Create a new Team</span>
                 </div>
 
                 <div class='field'>
                   <div class='control'>
-                    <input class='input team-name' type='text' placeholder='Team Name' required />
+                    <input class='input team-name' type='text' placeholder='Team Name' required minlength='5'
+                      maxlength='15' />
                   </div>
                 </div>
                 <p class="create-team-success is-size-7 has-text-success mb-3 is-hidden">Team created successfully.
@@ -38,12 +35,8 @@
               <form class="assign-employee-team">
                 <div class="mb-4">
                   <span class='box has-background-warning py-3 px-3'>
-                    <span 
-                    class="iconify-inline" 
-                    data-icon="ant-design:team-outlined" 
-                    style="font-size: 32px;" 
-                    data-flip="horizontal"
-                    >
+                    <span class="iconify-inline" data-icon="ant-design:team-outlined" style="font-size: 32px;"
+                      data-flip="horizontal">
                     </span> Assign Employees to a Team</span>
                 </div>
                 <div class="field">
@@ -78,15 +71,13 @@
                 <div class='field'>
                   <button type="submit" class='button is-primary'>Add Employee</button>
                 </div>
-                 <a href='/' class='button has-text-white has-text-weight-bold is-danger'>Cancel</a>
+                <a href='/' class='button has-text-white has-text-weight-bold is-danger'>Cancel</a>
               </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  </div>
   </div>
 </section>
 <script src="/js/createTeam.js"></script>

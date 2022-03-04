@@ -1,3 +1,11 @@
+const projectForm = document.querySelector('.project-form');
+const cancelProjectBtn = document.querySelector('.cancel-project-btn');
+
+function closeModalProj() {
+  var element = document.getElementById('modalCreateProject');
+  element.classList.remove('is-active');
+}
+
 const createProjectHandler = async (event) => {
   event.preventDefault();
   const projectTitle = document.querySelector('#project-title').value.trim();
@@ -27,6 +35,5 @@ const createProjectHandler = async (event) => {
   }
 };
 
-document
-  .querySelector('#project-form')
-  .addEventListener('submit', createProjectHandler);
+projectForm.addEventListener('submit', createProjectHandler);
+cancelProjectBtn.addEventListener('click', closeModalProj);

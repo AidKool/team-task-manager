@@ -15,6 +15,9 @@ Team.init(
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
+      validate: {
+        len: [5, 15],
+      },
     },
   },
   {

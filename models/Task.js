@@ -14,10 +14,16 @@ Task.init(
     task_title: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: [5, 25],
+      },
     },
     task_description: {
       type: DataTypes.TEXT,
       allowNull: false,
+      validate: {
+        len: [100, 200],
+      },
     },
     task_deadline: {
       type: DataTypes.DATEONLY,
