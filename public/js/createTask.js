@@ -24,7 +24,7 @@ const createTaskHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
-      document.location.replace('/managerPg');
+      document.location.reload();
       alert('Task created succesfully!');
     } else {
       alert(response.statusText);
