@@ -164,7 +164,7 @@ router.get('/teams', async (req, res) => {
     );
     const teamsData = await Team.findAll();
     const teams = teamsData.map((team) => team.get({ plain: true }));
-    res.render('manage-teams', { users, teams });
+    return res.render('manage-teams', { users, teams });
   } catch (error) {
     return res.status(500).json(error);
   }
