@@ -15,19 +15,31 @@ User.init(
     first_name: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: [1, 20],
+      },
     },
     last_name: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: [1, 20],
+      },
     },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
+      validate: {
+        len: [5, 15],
+      },
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: [8],
+      },
     },
     role: {
       type: DataTypes.STRING,
