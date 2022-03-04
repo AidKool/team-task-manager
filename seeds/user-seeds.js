@@ -7,12 +7,11 @@ const userData = [
     username: 'marthaJ',
     password: 'password1',
     role: 'manager',
-    team_id: 1,
   },
   {
-    first_name: 'George',
+    first_name: 'Bart',
     last_name: 'Parker',
-    username: 'georgeM',
+    username: 'bartM',
     password: 'password2',
     role: 'employee',
     team_id: 1,
@@ -26,12 +25,18 @@ const userData = [
     team_id: 1,
   },
   {
+    first_name: 'Cranky',
+    last_name: 'Pants',
+    username: 'cranky.pants',
+    password: 'password4',
+    role: 'manager',
+  },
+  {
     first_name: 'Mel',
     last_name: 'Clayton',
     username: 'melanie',
     password: 'password4',
     role: 'employee',
-    team_id: 1,
   },
   {
     first_name: 'Jess',
@@ -39,7 +44,6 @@ const userData = [
     username: 'jess.allen',
     password: 'password5',
     role: 'employee',
-    team_id: 1,
   },
 ];
 
