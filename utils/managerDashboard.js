@@ -1,4 +1,6 @@
+const { QueryTypes } = require('sequelize');
 const { Project, Team } = require('../models');
+const sequelize = require('../config/connection');
 
 async function renderManagerDashboard() {
   try {
@@ -9,7 +11,13 @@ async function renderManagerDashboard() {
 
     const teamsData = await Team.findAll({});
     const teams = teamsData.map((team) => team.get({ plain: true }));
-    return { projects, teams };
+    const freeTeams = await sequelize.query(
+      'SELECT team.id, team.name FROM team LEFT JOIN project ON team.id = project.team_id WHERE project.team_id IS NULL',
+      { type: QueryTypes.SELECT }
+    );
+    console.log(freeTeams);
+
+    return { projects, teams, freeTeams };
   } catch (err) {
     throw new Error(err.message);
   }

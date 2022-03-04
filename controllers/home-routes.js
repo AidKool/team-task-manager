@@ -8,14 +8,13 @@ const renderEmployeeDashboard = require('../utils/employeeDashboard');
 
 router.get('/', async (req, res) => {
   if (req.session.loggedIn) {
-    console.log(req.session.user);
     if (req.session.user.role === 'manager') {
-      const { projects, teams } = await renderManagerDashboard();
-      console.log(teams);
+      const { projects, teams, freeTeams } = await renderManagerDashboard();
       return res.render('manager-dashboard', {
         user: req.session.user,
         projects,
         teams,
+        freeTeams,
       });
     }
     req.params.id = req.session.user.id;
@@ -138,8 +137,6 @@ router.get('/teams/:id', async (req, res) => {
 
     const teamData = { id, name, usersData };
 
-    console.log(usersData);
-
     return res.render('view-team', { teamData, teamTasksData });
     // return res.status(200).json(teamData);
   } catch (error) {
@@ -206,7 +203,6 @@ router.get('/teams/:id/tasks', async (req, res) => {
       notStartedTasks,
     };
 
-    console.log(teamData);
     return res.render('all-team-tasks', teamData);
   } catch (error) {
     return res.status(500).json(error);

@@ -42,7 +42,7 @@
               <div class='columns'>
                 <div class='column is-5'>
                   <div>
-                    <span class='button is-static has-background-warning'>Assign Team</span>
+                    <span class='button is-static has-background-warning'>Assign Free Team</span>
                   </div>
                 </div>
                 <div class='column is-10 mr-3'>
@@ -50,7 +50,7 @@
                     <div class='control'>
                       <div class='select'>
                         <select id='assign-team'>
-                          {{#each teams as |team|}}
+                          {{#each freeTeams as |team|}}
                           <option data-id={{team.id}}>{{team.name}}</option>
                           {{/each}}
                         </select>

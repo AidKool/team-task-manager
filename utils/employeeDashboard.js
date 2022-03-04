@@ -1,7 +1,6 @@
 const { User, Task } = require('../models');
 
 async function renderEmployeeDashboard(req, res) {
-  console.log('id:', req.params.id);
   try {
     const userRawData = await User.findByPk(req.params.id, {
       attributes: ['id', 'username', 'first_name', 'last_name', 'team_id'],
