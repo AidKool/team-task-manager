@@ -13,6 +13,7 @@
 - [Contributing](#contributing)
 - [Questions](#questions)
 - [Screenshots](#screenshots)
+- [Live Site](#live)
 
 ## Git Repository
 
@@ -91,24 +92,28 @@ Project is open for contributions.
 
 - Screenshot of the Homepage or login page
 
-  ![screenshot](./public/img/homepage.JPG)
+  ![homepage](https://user-images.githubusercontent.com/73796715/156848290-303ce6c1-a471-49f3-a9e3-40c54c554113.JPG)
 
 - Screenshot of the create task form
 
-  ![screenshot](./public/img/create_task_form.JPG)
+  ![create_task_form](https://user-images.githubusercontent.com/73796715/156848231-cd04c31d-cb23-4519-ac4b-9157c687edb4.JPG)
 
 - Screenshot of the create project form
 
-  ![screenshot](./public/img/create_project_form.JPG)
+  ![create_project_form](https://user-images.githubusercontent.com/73796715/156848172-85109756-7f66-44eb-a90c-56b206e2a9af.JPG)
 
 - Screenshot of the manage team form
 
-  ![screenshot](./public/img/manage_team_form.JPG)
+  ![manage_team_form](https://user-images.githubusercontent.com/73796715/156848388-1adee19d-1f22-4093-8321-ba53867aba6f.JPG)
 
 - Screenshot of the Manager page
 
-  ![screenshot](./public/img/managerpage.JPG)
+  ![managerpage](https://user-images.githubusercontent.com/73796715/156848342-f223632f-c758-4c64-a550-5678a25b3619.JPG)
 
 - Screenshot of the Team page
 
-  ![screenshot](./public/img/teampage.JPG)
+  ![teampage](https://user-images.githubusercontent.com/73796715/156848648-a6c7bb85-4ef0-4957-b955-0ed85aeee066.JPG)
+
+## Live
+
+The application can be used live [here](https://teamtask-manager.herokuapp.com/)
