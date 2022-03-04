@@ -60,13 +60,13 @@
             <form class="column card m-1">
               <div class="tile is-12 is-parent notification is-primary">
                 <div class="field ">
-                  <label class="label has-text-white">View Active Teams</label>
+                  <label class="label has-text-white">View Teams</label>
                   <div class="control ">
                     <span class="iconify-inline icon is-large" data-icon="fluent:people-team-28-regular">
                     </span>
                     <div class="select is-size-7-mobile">
                       <select class="team-list">
-                        <option disabled selected value="/">Select Active Team</option>
+                        <option disabled selected value="/">Select Team</option>
                         {{#each teams as |team|}}
                         <option value="/teams/{{team.id}}">{{team.name}}</option>
                         {{/each}}

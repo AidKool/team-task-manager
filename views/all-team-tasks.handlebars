@@ -51,7 +51,7 @@
                       </thead>
                       <tbody>
                         {{#each tasks as |task|}}
-                        <tr>
+                        <tr class="task-row is-clickable" data-id="{{task.task_id}}">
                           <th>{{task.task_id}}</th>
                           <td>
                             <p>{{task.task_title}}</p>
@@ -68,7 +68,7 @@
                     </table>
                     <table class="table tasks-table is-scrollable is-hidden" id="completed-tasks">
                       <thead>
-                        <tr>
+                        <tr class="task-row is-clickable" data-id="{{task.task_id}}">
                           <th><abbr title="Position">Task ID</abbr></th>
                           <th>Task Title</th>
                           <th>Deadline Date</th>
@@ -77,7 +77,7 @@
                       </thead>
                       <tbody>
                         {{#each completedTasks as |task|}}
-                        <tr>
+                        <tr class="task-row is-clickable" data-id="{{task.task_id}}">
                           <th>{{task.task_id}}</th>
                           <td>
                             <p>{{task.task_title}}</p>
@@ -94,7 +94,7 @@
                     </table>
                     <table class="table tasks-table is-scrollable is-hidden" id="in-progress-tasks">
                       <thead>
-                        <tr>
+                        <tr class="task-row is-clickable" data-id="{{task.task_id}}">
                           <th><abbr title="Position">Task ID</abbr></th>
                           <th>Task Title</th>
                           <th>Deadline Date</th>
@@ -103,7 +103,7 @@
                       </thead>
                       <tbody>
                         {{#each inProgressTasks as |task|}}
-                        <tr>
+                        <tr class="task-row is-clickable" data-id="{{task.task_id}}">
                           <th>{{task.task_id}}</th>
                           <td>
                             <p>{{task.task_title}}</p>
@@ -129,7 +129,7 @@
                       </thead>
                       <tbody>
                         {{#each notStartedTasks as |task|}}
-                        <tr>
+                        <tr class="task-row is-clickable" data-id="{{task.task_id}}">
                           <th>{{task.task_id}}</th>
                           <td>
                             <p>{{task.task_title}}</p>
@@ -158,4 +158,5 @@
     </div>
   </div>
 </section>
+{{>modal-task-details}}
 <script src="/js/tasksTable.js"></script>
