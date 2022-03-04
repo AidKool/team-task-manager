@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     if (req.session.user.role === 'manager') {
       const { projects, teams } = await renderManagerDashboard();
       console.log(teams);
-      return res.render('managerPg', {
+      return res.render('manager-dashboard', {
         user: req.session.user,
         projects,
         teams,

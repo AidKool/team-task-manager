@@ -24,20 +24,14 @@
           <div class="columns has-text-centered has-text-weight-bold">
             <div class="column card m-1">
               <div class="is-child notification is-primary is-flex is-flex-direction-column is-align-items-center">
-                <span 
-                class="iconify-inline icon is-large"
-                 data-icon="wpf:create-new"
-                 >
-                 </span>
-                <a class="mt-1" onclick="openModalProj()">Create <br> Project</a>
+                <span class="iconify-inline icon is-large" data-icon="wpf:create-new">
+                </span>
+                <a class="open-project-modal" class="mt-1">Create<br>Project</a>
               </div>
             </div>
             <div class="column card m-1">
               <div class="is-child notification is-primary  is-flex is-flex-direction-column is-align-items-center">
-                <span 
-                class="iconify-inline icon is-large"
-                data-icon="fluent:people-team-add-24-regular"
-                >
+                <span class="iconify-inline icon is-large" data-icon="fluent:people-team-add-24-regular">
                 </span>
                 <a href="/teams" class="mt-1">Manage <br>Teams</a>
               </div>
@@ -49,13 +43,10 @@
                 <div class="field ">
                   <label class="label has-text-white ">View Current Project</label>
                   <div class="control">
-                    <span 
-                    class="iconify-inline icon is-large" 
-                    data-icon="icons8:parallel-tasks"
-                    >
+                    <span class="iconify-inline icon is-large" data-icon="icons8:parallel-tasks">
                     </span>
                     <div class="select is-size-7-mobile">
-                      <select id="project-list" onchange="location = this.value">
+                      <select class="project-list">
                         <option disabled selected value="/">Select Project</option>
                         {{#each projects as |project|}}
                         <option value="/teams/{{project.team_id}}">{{project.title}}</option>
@@ -71,13 +62,10 @@
                 <div class="field ">
                   <label class="label has-text-white">View Active Teams</label>
                   <div class="control ">
-                    <span 
-                    class="iconify-inline icon is-large" 
-                    data-icon="fluent:people-team-28-regular"
-                    >
+                    <span class="iconify-inline icon is-large" data-icon="fluent:people-team-28-regular">
                     </span>
                     <div class="select is-size-7-mobile">
-                      <select id="team-list" onchange="location = this.value">
+                      <select class="team-list">
                         <option disabled selected value="/">Select Active Team</option>
                         {{#each teams as |team|}}
                         <option value="/teams/{{team.id}}">{{team.name}}</option>
@@ -94,3 +82,4 @@
     </div>
 </section>
 {{>modalCreateProj}}
+<script src="/js/managerDashboard.js"></script>
