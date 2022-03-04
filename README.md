@@ -93,10 +93,13 @@ Run this command to install dependencies:
 
 ---
 
-Run this command to start the app:
+Run these commands to start the app:
 
   <pre><code>
   npm run watch
+  </code></pre>
+  <pre><code>
+  npm run start
   </code></pre>
 
 ## License:
@@ -111,7 +114,7 @@ Project is opened for contributions.
 
 ## Questions:
 
-- **Developer-1 Contact details:**
+- **Developers Contact details:**
 
   - Github: [@AidKool](https://github.com/AidKool)
 
