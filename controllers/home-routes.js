@@ -83,6 +83,12 @@ router.get('/teams/:id', async (req, res) => {
   if (!req.session.loggedIn) {
     return res.redirect('/login');
   }
+  if (
+    req.session.user.role !== 'manager' &&
+    req.session.user.team_id !== Number(req.params.id)
+  ) {
+    return res.redirect('/');
+  }
   try {
     const teamUsersRawData = await Team.findByPk(req.params.id, {
       include: [
@@ -148,6 +154,9 @@ router.get('/teams', async (req, res) => {
   if (!req.session.loggedIn) {
     return res.redirect('/login');
   }
+  if (req.session.user.role !== 'manager') {
+    return res.redirect('/');
+  }
   try {
     const users = await sequelize.query(
       'SELECT user.first_name, user.last_name, user.id FROM user WHERE team_id is null AND role = "employee"',
@@ -164,6 +173,12 @@ router.get('/teams', async (req, res) => {
 router.get('/teams/:id/tasks', async (req, res) => {
   if (!req.session.loggedIn) {
     return res.redirect('/login');
+  }
+  if (
+    req.session.user.role !== 'manager' &&
+    req.session.user.team_id !== Number(req.params.id)
+  ) {
+    return res.redirect('/');
   }
   const teamID = Number(req.params.id);
   try {
