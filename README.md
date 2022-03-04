@@ -123,4 +123,26 @@ Project is opened for contributions.
 
 ## Screenshots
 
-- Screenshot of the database created ![screenshot]()
+- Screenshot of the Homepage or login page
+
+  ![screenshot](./public/img/homepage.JPG)
+
+- Screenshot of the create task form
+
+  ![screenshot](./public/img/create_task_form.JPG)
+
+- Screenshot of the create project form
+
+  ![screenshot](./public/img/create_project_form.JPG)
+
+- Screenshot of the manage team form
+
+  ![screenshot](./public/img/manage_team_form.JPG)
+
+- Screenshot of the Manager page
+
+  ![screenshot](./public/img/managerpage.JPG)
+
+- Screenshot of the Team page
+
+  ![screenshot](./public/img/teampage.JPG)
