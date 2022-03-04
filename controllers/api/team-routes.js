@@ -42,38 +42,4 @@ router.patch('/:id', async (req, res) => {
   }
 });
 
-router.post('/:id/project', async (req, res) => {
-  try {
-    await TeamProject.create({
-      team_id: req.params.id,
-      project_id: req.body.project_id,
-    });
-    return res.status(201).json({ message: 'Project successfully added' });
-  } catch (error) {
-    return res.status(500).json(error);
-  }
-});
-
-router.patch('/:id/project', async (req, res) => {
-  try {
-    await TeamProject.update(req.body, {
-      where: {
-        team_id: req.params.id,
-      },
-    });
-    return res.status(201).json({ message: 'Project successfully updated' });
-  } catch (error) {
-    return res.status(500).json(error);
-  }
-});
-
-router.delete('/:id', async (req, res) => {
-  try {
-    await Team.destroy({ where: { id: req.params.id } });
-    return res.status(200).json({ message: 'Team deleted successfully' });
-  } catch (error) {
-    return res.status(500).json(error);
-  }
-});
-
 module.exports = router;
