@@ -215,7 +215,7 @@ router.get('/teams/:id/tasks', async (req, res) => {
     };
 
     console.log(teamData);
-    return res.render('allTeamTasks', teamData);
+    return res.render('all-team-tasks', teamData);
   } catch (error) {
     return res.status(500).json(error);
   }
