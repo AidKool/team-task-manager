@@ -7,7 +7,6 @@
 - [Git-Repository](#git-repository)
 - [Demo-Video](#walktrough-video)
 - [Description](#description)
-- [User-story](#user-story)
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
@@ -22,7 +21,8 @@ The git repository folder that is hosting the project can be found
 
 ## Link to the walktrough video
 
-Application video [demo]()
+Application video
+[demo](https://drive.google.com/file/d/1MA4HYNENXGCWh7qOiZ2gEddEhNQrgxMA/view)
 
 ## Description:
 
@@ -41,43 +41,6 @@ tasks. The user with the manage role when login will be redirected to the
 manager page. From its page , the manager will be able to view all projects ,
 all existing Team, create project, create a Team and allocated each employee to
 a selected team.
-
-## User story
-
-```md
-AS A developer who writes about tech I WANT a web application SO THAT Users can
-manage projects,Teams and tasks.
-```
-
-```md
-AS A USER WHEN I am presented with the option to login or to sign up. WHEN I
-choose to sign up THEN I am prompted with a form to register as an employee.
-WHEN I click to the home page button THEN I am taken to the homepage with the
-option to login. WHEN I enter a username and password THEN I am directed to an
-employee page or manager page.
-```
-
-```md
-AS A USER WHEN I login as an employee , i am presented with the option to view
-all team members or all team tasks. WHEN i clicked on the button view team THEN
-I am presented with a list of team members, team tasks statistics and an option
-to create tasks. WHEN i looked at the statistics THEN i am presented with a
-chart and table that tell me statut of completion of all tasks. WHEN i click on
-the create task button THEN i am prompted to enter the task name , deadline, an
-option to choose the team member to assign the task to, and a task description.
-```
-
-```md
-AS A USER WHEN I login as a manager , I am presented with the option to view the
-list of projects, a list of all teams, an option to create a project and to
-manage teams. WHEN i select a project from the list THEN i am directed to a page
-giving statistics about the project completion. WHEN i select a team THEN i am
-presented with a page with the list of team members and statistics about tasks
-allocated. WHEN I click on create project THEN I am prompted to enter the
-project name, deadline and assign it to an existing team. WHEN I click on manage
-team THEN I am prompted with the option to create a team or to assign an
-employee to a team.
-```
 
 ## Installation:
 
@@ -110,7 +73,7 @@ Run these commands to start the app:
 
 ## Contributing:
 
-Project is opened for contributions.
+Project is open for contributions.
 
 ## Questions:
 
