@@ -1,5 +1,6 @@
 const createTaskBtn = document.querySelector('.create-task');
 const createTaskForm = document.querySelector('.create-task-form');
+const cancelCreateTaskBtn = document.querySelector('.cancel-create-task');
 
 const createTaskHandler = async (event) => {
   event.preventDefault();
@@ -32,14 +33,15 @@ const createTaskHandler = async (event) => {
 };
 
 function closeModalTask() {
-  var element = document.getElementById('modalCreateTask');
+  const element = document.getElementById('modalCreateTask');
   element.classList.remove('is-active');
 }
 
 function openModalTask() {
-  var element = document.getElementById('modalCreateTask');
+  const element = document.getElementById('modalCreateTask');
   element.classList.add('is-active');
 }
 
 createTaskBtn.addEventListener('click', openModalTask);
 createTaskForm.addEventListener('submit', createTaskHandler);
+cancelCreateTaskBtn.addEventListener('click', closeModalTask);

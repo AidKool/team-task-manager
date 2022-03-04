@@ -27,14 +27,14 @@ const taskData = [
     task_description: 'Create seeds to test database',
     task_deadline: new Date('2022/03/04'),
     user_id: 4,
-    status: 'in_progress',
+    status: 'not_started',
   },
   {
     task_title: 'Add manager view',
     task_description: 'Create view for managers',
     task_deadline: new Date('2022/03/07'),
     user_id: 5,
-    status: 'completed',
+    status: 'not_started',
   },
 ];
 
