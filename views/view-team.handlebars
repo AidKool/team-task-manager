@@ -8,7 +8,7 @@
             <span class="iconify-inline" data-icon="fluent:people-team-24-regular" data-flip="horizontal">
             </span>Team Members
           </h1>
-          {{>employeeCard}}
+          {{>employee-card}}
         </div>
 
         <div class="box column is-7 is-justify-content-center has-text-centered">
@@ -21,7 +21,7 @@
             <div
               class="tabs is-rounded is-centered has-background-link-light mb-0 is-size-7-mobile is-size-7-tablet is-size-7-desktop">
               <ul>
-                <li class="is-active has-text-weight-bold ">
+                <li class="is-active has-text-weight-bold">
                   <a>
                     <p class="tag mr-1 is-link all-tasks">{{teamTasksData.all}}</p>
                     <span>All</span>
@@ -29,7 +29,7 @@
                 </li>
                 <li>
                   <a>
-                    <p class="tag is-success mr-1  has-text-white completed">{{teamTasksData.completed}}</p>
+                    <p class="tag is-success mr-1 has-text-white completed">{{teamTasksData.completed}}</p>
                     <span>Completed</span>
                   </a>
                 </li>
